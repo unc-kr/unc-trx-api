@@ -17,6 +17,7 @@ namespace TransitionRegistry.Models
     
         public TransitionRegistryContext() : base("name=TransitionRegistryContext")
         {
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
         public System.Data.Entity.DbSet<TransitionRegistry.Models.Patient> Patients { get; set; }
