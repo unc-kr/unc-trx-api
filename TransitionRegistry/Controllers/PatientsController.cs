@@ -6,8 +6,10 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using TransitionRegistry.DTOs;
 using TransitionRegistry.Models;
 
 namespace TransitionRegistry.Controllers
@@ -17,16 +19,41 @@ namespace TransitionRegistry.Controllers
         private TransitionRegistryContext db = new TransitionRegistryContext();
 
         // GET: api/Patients
-        public IQueryable<Patient> GetPatients()
+        public IQueryable<PatientDTO> GetPatients()
         {
-            return db.Patients;
+            return from p in db.Patients
+                   select new PatientDTO()
+                   {
+                        Id = p.Id,
+                        Name = p.Name,
+                        MrnNumber = p.MrnNumber,
+                        Birthday = p.Birthday,
+                        Gender = p.Gender,
+                        ParticipantType = p.ParticipantType
+                   };
         }
 
         // GET: api/Patients/5
         [ResponseType(typeof(Patient))]
-        public IHttpActionResult GetPatient(int id)
+        public async Task<IHttpActionResult> GetPatient(int id)
         {
-            Patient patient = db.Patients.Find(id);
+            var patient = await db.Patients.Include(p => p.Studies).Select(p =>
+                new PatientDetailDTO()
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    MrnNumber = p.MrnNumber,
+                    Birthday = p.Birthday,
+                    Gender = p.Gender,
+                    ParticipantType = p.ParticipantType,
+                    Studies = p.Studies.Select(s => new StudyDTO()
+                    {
+                        Id = s.Id,
+                        Name = s.Name,
+                    }).ToList()
+                }
+            ).SingleOrDefaultAsync(s => s.Id == id);
+
             if (patient == null)
             {
                 return NotFound();
@@ -72,7 +99,7 @@ namespace TransitionRegistry.Controllers
 
         // POST: api/Patients
         [ResponseType(typeof(Patient))]
-        public IHttpActionResult PostPatient(Patient patient)
+        public async Task<IHttpActionResult> PostPatient(Patient patient)
         {
             if (!ModelState.IsValid)
             {
@@ -80,9 +107,13 @@ namespace TransitionRegistry.Controllers
             }
 
             db.Patients.Add(patient);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = patient.Id }, patient);
+            db.Entry(patient).Collection(p => p.Studies).Load();
+
+            var dto = new PatientDetailDTO(patient);
+
+            return CreatedAtRoute("DefaultApi", new { id = patient.Id }, dto);
         }
 
         // DELETE: api/Patients/5
