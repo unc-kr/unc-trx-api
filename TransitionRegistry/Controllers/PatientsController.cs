@@ -15,7 +15,7 @@ using TransitionRegistry.Models;
 
 namespace TransitionRegistry.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "GET,PUT,POST,DELETE,OPTIONS")]
     public class PatientsController : ApiController
     {
         private TransitionRegistryContext db = new TransitionRegistryContext();
