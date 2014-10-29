@@ -14,7 +14,7 @@ namespace TransitionRegistry.DTOs
         public DateTime Birthday { get; set; }
         public Gender Gender { get; set; }
         public ParticipantType ParticipantType { get; set; }
-
+        public string Description { get; set; }
         public PatientDTO() { }
 
         public PatientDTO(Patient p)
@@ -24,6 +24,7 @@ namespace TransitionRegistry.DTOs
             this.MrnNumber = p.MrnNumber;
             this.Birthday = p.Birthday;
             this.Gender = p.Gender;
+            this.Description = p.Description;
             this.ParticipantType = p.ParticipantType;
         }
     }

@@ -31,7 +31,9 @@ namespace TransitionRegistry.Controllers
                         MrnNumber = p.MrnNumber,
                         Birthday = p.Birthday,
                         Gender = p.Gender,
+                        Description = p.Description,
                         ParticipantType = p.ParticipantType
+                        
                    };
         }
 
@@ -48,6 +50,7 @@ namespace TransitionRegistry.Controllers
                     Birthday = p.Birthday,
                     Gender = p.Gender,
                     ParticipantType = p.ParticipantType,
+                    Description = p.Description,
                     Studies = p.Studies.Select(s => new StudyDTO()
                     {
                         Id = s.Id,

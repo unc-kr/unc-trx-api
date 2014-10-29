@@ -128,6 +128,10 @@
     <Compile Include="Migrations\201410140215347_InitialCreate.Designer.cs">
       <DependentUpon>201410140215347_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410291404589_AddDescriptionToPatient.cs" />
+    <Compile Include="Migrations\201410291404589_AddDescriptionToPatient.Designer.cs">
+      <DependentUpon>201410291404589_AddDescriptionToPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Study.cs" />
@@ -151,6 +155,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201410140215347_InitialCreate.resx">
       <DependentUpon>201410140215347_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410291404589_AddDescriptionToPatient.resx">
+      <DependentUpon>201410291404589_AddDescriptionToPatient.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
