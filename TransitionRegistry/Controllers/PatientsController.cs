@@ -15,11 +15,7 @@ using TransitionRegistry.Models;
 
 namespace TransitionRegistry.Controllers
 {
-<<<<<<< HEAD
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-=======
-    [EnableCors(origins: "*", headers: "*", methods: "GET,PUT,POST,DELETE,OPTIONS")]
->>>>>>> FETCH_HEAD
     public class PatientsController : ApiController
     {
         private TransitionRegistryContext db = new TransitionRegistryContext();
@@ -35,13 +31,7 @@ namespace TransitionRegistry.Controllers
                         MrnNumber = p.MrnNumber,
                         Birthday = p.Birthday,
                         Gender = p.Gender,
-<<<<<<< HEAD
                         ParticipantType = p.ParticipantType
-=======
-                        Description = p.Description,
-                        ParticipantType = p.ParticipantType
-                        
->>>>>>> FETCH_HEAD
                    };
         }
 
@@ -58,10 +48,6 @@ namespace TransitionRegistry.Controllers
                     Birthday = p.Birthday,
                     Gender = p.Gender,
                     ParticipantType = p.ParticipantType,
-<<<<<<< HEAD
-=======
-                    Description = p.Description,
->>>>>>> FETCH_HEAD
                     Studies = p.Studies.Select(s => new StudyDTO()
                     {
                         Id = s.Id,

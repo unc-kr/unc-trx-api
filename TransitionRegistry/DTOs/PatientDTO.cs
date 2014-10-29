@@ -14,11 +14,7 @@ namespace TransitionRegistry.DTOs
         public DateTime Birthday { get; set; }
         public Gender Gender { get; set; }
         public ParticipantType ParticipantType { get; set; }
-<<<<<<< HEAD
 
-=======
-        public string Description { get; set; }
->>>>>>> FETCH_HEAD
         public PatientDTO() { }
 
         public PatientDTO(Patient p)
@@ -28,10 +24,6 @@ namespace TransitionRegistry.DTOs
             this.MrnNumber = p.MrnNumber;
             this.Birthday = p.Birthday;
             this.Gender = p.Gender;
-<<<<<<< HEAD
-=======
-            this.Description = p.Description;
->>>>>>> FETCH_HEAD
             this.ParticipantType = p.ParticipantType;
         }
     }
