@@ -14,6 +14,10 @@ namespace TransitionRegistry.DTOs
         public DateTime Birthday { get; set; }
         public Gender Gender { get; set; }
         public ParticipantType ParticipantType { get; set; }
+<<<<<<< HEAD
+=======
+        public string Description { get; set; }
+>>>>>>> FETCH_HEAD
         public ICollection<StudyDTO> Studies { get; set; }
 
         public PatientDetailDTO() { }
@@ -26,6 +30,10 @@ namespace TransitionRegistry.DTOs
             this.Birthday = p.Birthday;
             this.Gender = p.Gender;
             this.ParticipantType = p.ParticipantType;
+<<<<<<< HEAD
+=======
+            this.Description = p.Description;
+>>>>>>> FETCH_HEAD
             this.Studies = p.Studies.Select(s => new StudyDTO(s)).ToList();
         }
     }
