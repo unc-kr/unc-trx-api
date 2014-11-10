@@ -58,6 +58,7 @@ namespace TransitionRegistry.Controllers
                     {
                         Id = s.Id,
                         Name = s.Name,
+                        ShortCode = s.ShortCode,
                         Archived = s.Archived
                     }).ToList()
                 }
