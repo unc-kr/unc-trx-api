@@ -26,6 +26,12 @@ namespace TransitionRegistry
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            config.Routes.MapHttpRoute(
+                name: "Enrollments",
+                routeTemplate: "api/Studies/{studyId}/Patients/{patientId}",
+                defaults: new { controller = "Enrollments" }
+            );
+
             var formatters = GlobalConfiguration.Configuration.Formatters;
             var jsonFormatter = formatters.JsonFormatter;
             var settings = jsonFormatter.SerializerSettings;
