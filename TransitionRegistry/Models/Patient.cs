@@ -30,7 +30,8 @@ namespace TransitionRegistry.Models
         public DateTime Birthday { get; set; }
         public Gender Gender { get; set; }
         public ParticipantType ParticipantType { get; set; }
-
+        public string Description { get; set; }
         public virtual ICollection<Study> Studies { get; set; }
+        public int Archive { get; set; }
     }
 }

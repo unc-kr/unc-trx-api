@@ -31,7 +31,8 @@ namespace TransitionRegistry.Controllers
                         MrnNumber = p.MrnNumber,
                         Birthday = p.Birthday,
                         Gender = p.Gender,
-                        ParticipantType = p.ParticipantType
+                        ParticipantType = p.ParticipantType,
+                        Description = p.Description
                    };
         }
 
@@ -48,6 +49,7 @@ namespace TransitionRegistry.Controllers
                     Birthday = p.Birthday,
                     Gender = p.Gender,
                     ParticipantType = p.ParticipantType,
+                    Description = p.Description,
                     Studies = p.Studies.Select(s => new StudyDTO()
                     {
                         Id = s.Id,
@@ -118,17 +120,17 @@ namespace TransitionRegistry.Controllers
             return CreatedAtRoute("DefaultApi", new { id = patient.Id }, dto);
         }
 
-        // DELETE: api/Patients/5
+        // ARCHIVE: api/Patients/5
         [ResponseType(typeof(Patient))]
-        public IHttpActionResult DeletePatient(int id)
+        public IHttpActionResult ArchivePatient(int id)
         {
             Patient patient = db.Patients.Find(id);
             if (patient == null)
             {
                 return NotFound();
             }
-
-            db.Patients.Remove(patient);
+            
+            //db.Patients.Remove(patient); --Former delete
             db.SaveChanges();
 
             return Ok(patient);
