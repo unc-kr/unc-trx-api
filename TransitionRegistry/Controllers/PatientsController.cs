@@ -131,7 +131,7 @@ namespace TransitionRegistry.Controllers
 
         // DELETE: api/Patients/5
         [ResponseType(typeof(Patient))]
-        public IHttpActionResult ArchivePatient(int id)
+        public IHttpActionResult DeletePatient(int id)
         {
             Patient patient = db.Patients.Find(id);
             if (patient == null)
@@ -139,7 +139,7 @@ namespace TransitionRegistry.Controllers
                 return NotFound();
             }
             patient.Archived = true;
-            //db.Patients.Remove(patient); --Former delete
+            //db.Patients.Remove(patient); -- former delete
             db.SaveChanges();
 
             return Ok(patient);
