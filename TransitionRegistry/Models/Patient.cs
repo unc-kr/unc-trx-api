@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -32,6 +33,8 @@ namespace TransitionRegistry.Models
         public ParticipantType ParticipantType { get; set; }
         public string Description { get; set; }
         public virtual ICollection<Study> Studies { get; set; }
-        public int Archive { get; set; }
+        [DefaultValue(false)]
+        public Boolean Archived { get; set; }
+        public String ArchiveDescription { get; set; }
     }
 }

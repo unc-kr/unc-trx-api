@@ -17,6 +17,9 @@ namespace TransitionRegistry.Migrations
                         Birthday = c.DateTime(nullable: false, storeType: "date"),
                         Gender = c.Int(nullable: false),
                         ParticipantType = c.Int(nullable: false),
+                        Description = c.String(),
+                        Archive = c.Int(nullable: false, identity: true),
+                        ArchiveDescription = c.String()
                     })
                 .PrimaryKey(t => t.Id);
             

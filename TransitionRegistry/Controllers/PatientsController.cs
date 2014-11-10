@@ -24,6 +24,7 @@ namespace TransitionRegistry.Controllers
         public IQueryable<PatientDTO> GetPatients()
         {
             return from p in db.Patients
+                   where p.Archived == false
                    select new PatientDTO()
                    {
                         Id = p.Id,
@@ -32,7 +33,9 @@ namespace TransitionRegistry.Controllers
                         Birthday = p.Birthday,
                         Gender = p.Gender,
                         ParticipantType = p.ParticipantType,
-                        Description = p.Description
+                        Description = p.Description,
+                        Archived = p.Archived,
+                        ArchiveDescription = p.ArchiveDescription
                    };
         }
 
@@ -50,6 +53,8 @@ namespace TransitionRegistry.Controllers
                     Gender = p.Gender,
                     ParticipantType = p.ParticipantType,
                     Description = p.Description,
+                    Archived = p.Archived,
+                    ArchiveDescription = p.ArchiveDescription,
                     Studies = p.Studies.Select(s => new StudyDTO()
                     {
                         Id = s.Id,
@@ -59,6 +64,10 @@ namespace TransitionRegistry.Controllers
             ).SingleOrDefaultAsync(s => s.Id == id);
 
             if (patient == null)
+            {
+                return NotFound();
+            }
+            if (patient.Archived == true)
             {
                 return NotFound();
             }
@@ -120,17 +129,17 @@ namespace TransitionRegistry.Controllers
             return CreatedAtRoute("DefaultApi", new { id = patient.Id }, dto);
         }
 
-        // ARCHIVE: api/Patients/5
+        // DELETE: api/Patients/5
         [ResponseType(typeof(Patient))]
-        public IHttpActionResult ArchivePatient(int id)
+        public IHttpActionResult DeletePatient(int id)
         {
             Patient patient = db.Patients.Find(id);
             if (patient == null)
             {
                 return NotFound();
             }
-            
-            //db.Patients.Remove(patient); --Former delete
+            patient.Archived = true;
+            //db.Patients.Remove(patient); -- former delete
             db.SaveChanges();
 
             return Ok(patient);
