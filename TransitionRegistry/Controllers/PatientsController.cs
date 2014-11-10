@@ -24,6 +24,7 @@ namespace TransitionRegistry.Controllers
         public IQueryable<PatientDTO> GetPatients()
         {
             return from p in db.Patients
+                   where p.Archived == false
                    select new PatientDTO()
                    {
                         Id = p.Id,
@@ -128,7 +129,7 @@ namespace TransitionRegistry.Controllers
             return CreatedAtRoute("DefaultApi", new { id = patient.Id }, dto);
         }
 
-        // ARCHIVE: api/Patients/5
+        // DELETE: api/Patients/5
         [ResponseType(typeof(Patient))]
         public IHttpActionResult ArchivePatient(int id)
         {
