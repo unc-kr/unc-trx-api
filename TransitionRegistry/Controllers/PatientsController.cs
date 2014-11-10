@@ -35,7 +35,6 @@ namespace TransitionRegistry.Controllers
                         ParticipantType = p.ParticipantType,
                         Description = p.Description,
                         Archived = p.Archived,
-                        ArchiveDescription = p.ArchiveDescription
                    };
         }
 
@@ -59,6 +58,7 @@ namespace TransitionRegistry.Controllers
                     {
                         Id = s.Id,
                         Name = s.Name,
+                        Archived = s.Archived
                     }).ToList()
                 }
             ).SingleOrDefaultAsync(s => s.Id == id);
@@ -138,8 +138,8 @@ namespace TransitionRegistry.Controllers
             {
                 return NotFound();
             }
+
             patient.Archived = true;
-            //db.Patients.Remove(patient); -- former delete
             db.SaveChanges();
 
             return Ok(patient);

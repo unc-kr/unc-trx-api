@@ -18,7 +18,6 @@ namespace TransitionRegistry.DTOs
         public string Description { get; set; }
         [DefaultValue(false)]
         public Boolean Archived { get; set; }
-        public String ArchiveDescription { get; set; }
 
         public PatientDTO() { }
 
@@ -32,7 +31,6 @@ namespace TransitionRegistry.DTOs
             this.ParticipantType = p.ParticipantType;
             this.Description = p.Description;
             this.Archived = p.Archived;
-            this.ArchiveDescription = p.ArchiveDescription;
         }
     }
 }

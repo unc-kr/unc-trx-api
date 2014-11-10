@@ -129,9 +129,17 @@
     <Compile Include="Migrations\201410140215347_InitialCreate.Designer.cs">
       <DependentUpon>201410140215347_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411100153091_Nov9.cs" />
-    <Compile Include="Migrations\201411100153091_Nov9.Designer.cs">
-      <DependentUpon>201411100153091_Nov9.cs</DependentUpon>
+    <Compile Include="Migrations\201411100153091_AddArchive.cs" />
+    <Compile Include="Migrations\201411100153091_AddArchive.Designer.cs">
+      <DependentUpon>201411100153091_AddArchive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411100802048_AddShortCode.cs" />
+    <Compile Include="Migrations\201411100802048_AddShortCode.Designer.cs">
+      <DependentUpon>201411100802048_AddShortCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411100806035_AddArchivedToStudies.cs" />
+    <Compile Include="Migrations\201411100806035_AddArchivedToStudies.Designer.cs">
+      <DependentUpon>201411100806035_AddArchivedToStudies.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -157,8 +165,14 @@
     <EmbeddedResource Include="Migrations\201410140215347_InitialCreate.resx">
       <DependentUpon>201410140215347_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411100153091_Nov9.resx">
-      <DependentUpon>201411100153091_Nov9.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411100153091_AddArchive.resx">
+      <DependentUpon>201411100153091_AddArchive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411100802048_AddShortCode.resx">
+      <DependentUpon>201411100802048_AddShortCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411100806035_AddArchivedToStudies.resx">
+      <DependentUpon>201411100806035_AddArchivedToStudies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

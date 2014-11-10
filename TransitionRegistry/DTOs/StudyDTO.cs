@@ -10,6 +10,8 @@ namespace TransitionRegistry.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string ShortCode { get; set; }
+        public Boolean Archived { get; set; }
 
         public StudyDTO() { }
 
@@ -17,6 +19,7 @@ namespace TransitionRegistry.DTOs
         {
             this.Id = s.Id;
             this.Name = s.Name;
+            this.Archived = s.Archived;
         }
 
     }

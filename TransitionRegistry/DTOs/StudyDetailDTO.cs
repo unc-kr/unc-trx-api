@@ -10,7 +10,10 @@ namespace TransitionRegistry.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string ShortCode { get; set; }
         public ICollection<PatientDTO> Patients { get; set; }
+        public Boolean Archived { get; set; }
+        public String ArchiveDescription { get; set; }
 
         public StudyDetailDTO() { }
 
@@ -19,6 +22,8 @@ namespace TransitionRegistry.DTOs
             this.Id = s.Id;
             this.Name = s.Name;
             this.Patients = s.Patients.Select(p => new PatientDTO(p)).ToList();
+            this.Archived = s.Archived;
+            this.ArchiveDescription = s.ArchiveDescription;
         }
     }
 }

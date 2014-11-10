@@ -24,10 +24,13 @@ namespace TransitionRegistry.Controllers
         public IQueryable<StudyDTO> GetStudies()
         {
             return from s in db.Studies
+                   where s.Archived == false
                    select new StudyDTO()
                    {
                         Id = s.Id,
-                        Name = s.Name
+                        Name = s.Name,
+                        ShortCode = s.ShortCode,
+                        Archived = s.Archived
                    };
         }
 
@@ -40,6 +43,9 @@ namespace TransitionRegistry.Controllers
                 {
                     Id = s.Id,
                     Name = s.Name,
+                    ShortCode = s.ShortCode,
+                    Archived = s.Archived,
+                    ArchiveDescription = s.ArchiveDescription,
                     Patients = s.Patients.Select(p => new PatientDTO()
                     {
                         Id = p.Id,
@@ -47,7 +53,8 @@ namespace TransitionRegistry.Controllers
                         MrnNumber = p.MrnNumber,
                         Birthday = p.Birthday,
                         Gender = p.Gender,
-                        ParticipantType = p.ParticipantType
+                        ParticipantType = p.ParticipantType,
+                        Archived = p.Archived
                     }).ToList()
                 }
             ).SingleOrDefaultAsync(s => s.Id == id);
@@ -124,7 +131,7 @@ namespace TransitionRegistry.Controllers
                 return NotFound();
             }
 
-            db.Studies.Remove(study);
+            study.Archived = true;
             db.SaveChanges();
 
             return Ok(study);

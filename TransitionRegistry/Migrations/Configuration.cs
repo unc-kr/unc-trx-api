@@ -20,8 +20,8 @@ namespace TransitionRegistry.Migrations
             var p1 = new Patient() { Id = 1, Name = "John Apple", MrnNumber = "123456", Birthday = new DateTime(1990, 10, 05), Gender = Gender.Male, ParticipantType = ParticipantType.Adult };
             var p2 = new Patient() { Id = 2, Name = "Susan Pear", MrnNumber = "654321", Birthday = new DateTime(2000, 02, 18), Gender = Gender.Female, ParticipantType = ParticipantType.Pediatric };
             
-            var s1 = new Study() { Id = 1, Name = "Red Study", Patients = new List<Patient>() {p1, p2} };
-            var s2 = new Study() { Id = 2, Name = "Green Study", Patients = new List<Patient>() { p1 } };
+            var s1 = new Study() { Id = 1, Name = "Red Study", ShortCode = "RD", Patients = new List<Patient>() {p1, p2} };
+            var s2 = new Study() { Id = 2, Name = "Green Study", ShortCode = "GR", Patients = new List<Patient>() { p1 } };
 
             context.Patients.AddOrUpdate(x => x.Id,
                 p1,
