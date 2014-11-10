@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using TransitionRegistry.Models;
@@ -15,6 +16,9 @@ namespace TransitionRegistry.DTOs
         public Gender Gender { get; set; }
         public ParticipantType ParticipantType { get; set; }
         public string Description { get; set; }
+        [DefaultValue(false)]
+        public Boolean Archived { get; set; }
+        public String ArchiveDescription { get; set; }
 
         public PatientDTO() { }
 
@@ -27,6 +31,8 @@ namespace TransitionRegistry.DTOs
             this.Gender = p.Gender;
             this.ParticipantType = p.ParticipantType;
             this.Description = p.Description;
+            this.Archived = p.Archived;
+            this.ArchiveDescription = p.ArchiveDescription;
         }
     }
 }

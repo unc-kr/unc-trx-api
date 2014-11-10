@@ -32,7 +32,9 @@ namespace TransitionRegistry.Controllers
                         Birthday = p.Birthday,
                         Gender = p.Gender,
                         ParticipantType = p.ParticipantType,
-                        Description = p.Description
+                        Description = p.Description,
+                        Archived = p.Archived,
+                        ArchiveDescription = p.ArchiveDescription
                    };
         }
 
@@ -50,6 +52,8 @@ namespace TransitionRegistry.Controllers
                     Gender = p.Gender,
                     ParticipantType = p.ParticipantType,
                     Description = p.Description,
+                    Archived = p.Archived,
+                    ArchiveDescription = p.ArchiveDescription,
                     Studies = p.Studies.Select(s => new StudyDTO()
                     {
                         Id = s.Id,
@@ -59,6 +63,10 @@ namespace TransitionRegistry.Controllers
             ).SingleOrDefaultAsync(s => s.Id == id);
 
             if (patient == null)
+            {
+                return NotFound();
+            }
+            if (patient.Archived == true)
             {
                 return NotFound();
             }
@@ -129,7 +137,7 @@ namespace TransitionRegistry.Controllers
             {
                 return NotFound();
             }
-            
+            patient.Archived = true;
             //db.Patients.Remove(patient); --Former delete
             db.SaveChanges();
 
