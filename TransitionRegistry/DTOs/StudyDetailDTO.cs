@@ -8,13 +8,11 @@ namespace TransitionRegistry.DTOs
 {
     public class StudyDetailDTO : StudyDTO
     {
-        public string Grant { get; set; }
         public ICollection<PatientDTO> Patients { get; set; }
         public String ArchiveDescription { get; set; }
 
         public StudyDetailDTO(Study s) : base(s)
         {
-            this.Grant = s.Grant;
             this.Patients = s.Patients.Select(p => new PatientDTO(p)).ToList();
             this.ArchiveDescription = s.ArchiveDescription;
         }
