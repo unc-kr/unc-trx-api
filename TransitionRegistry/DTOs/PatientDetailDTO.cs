@@ -21,6 +21,8 @@ namespace TransitionRegistry.DTOs
         {
             this.Gender = p.Gender;
             this.Race = p.Race;
+            this.Email = p.Email;
+            this.PhoneNumber = p.PhoneNumber;
             this.Description = p.Description;
             this.Studies = p.Studies.Select(s => new StudyDTO(s)).ToList();
             this.ArchiveDescription = p.ArchiveDescription;
