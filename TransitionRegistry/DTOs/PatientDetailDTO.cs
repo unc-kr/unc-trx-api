@@ -9,7 +9,6 @@ namespace TransitionRegistry.DTOs
 {
     public class PatientDetailDTO : PatientDTO
     {
-        public Gender Gender { get; set; }
         public Race Race { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
@@ -19,7 +18,6 @@ namespace TransitionRegistry.DTOs
 
         public PatientDetailDTO(Patient p) : base(p)
         {
-            this.Gender = p.Gender;
             this.Race = p.Race;
             this.Email = p.Email;
             this.PhoneNumber = p.PhoneNumber;

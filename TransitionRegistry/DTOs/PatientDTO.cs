@@ -12,6 +12,7 @@ namespace TransitionRegistry.DTOs
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
+        public Gender Gender { get; set; }
         public string MrnNumber { get; set; }
         public ParticipantType ParticipantType { get; set; }
         public Diagnosis Diagnosis { get; set; }
@@ -22,6 +23,7 @@ namespace TransitionRegistry.DTOs
             this.Id = p.Id;
             this.Name = p.Name;
             this.Birthday = p.Birthday;
+            this.Gender = p.Gender;
             this.MrnNumber = p.MrnNumber;
             this.ParticipantType = p.ParticipantType;
             this.Diagnosis = p.Diagnosis;
