@@ -10,12 +10,23 @@ namespace TransitionRegistry.Models
     public class Study
     {
         public int Id { get; set; }
-        [Required]
+
+        [Required, MaxLength(64)]
         public string ShortCode { get; set; }
-        [Required]
+
+        [Required, MaxLength(512)]
         public string Name { get; set; }
+
+        [MaxLength(512)]
+        public string Grant { get; set; }
+
+        [MaxLength(2048)]
+        public string Description { get; set; }
+
         [DefaultValue(false)]
         public Boolean Archived { get; set; }
+
+        [DefaultValue(""), MaxLength(2048)]
         public String ArchiveDescription { get; set; }
 
         public virtual ICollection<Patient> Patients { get; set; }

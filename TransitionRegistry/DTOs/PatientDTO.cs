@@ -11,25 +11,20 @@ namespace TransitionRegistry.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string MrnNumber { get; set; }
         public DateTime Birthday { get; set; }
-        public Gender Gender { get; set; }
+        public string MrnNumber { get; set; }
         public ParticipantType ParticipantType { get; set; }
-        public string Description { get; set; }
-        [DefaultValue(false)]
+        public Diagnosis Diagnosis { get; set; }
         public Boolean Archived { get; set; }
-
-        public PatientDTO() { }
 
         public PatientDTO(Patient p)
         {
             this.Id = p.Id;
             this.Name = p.Name;
-            this.MrnNumber = p.MrnNumber;
             this.Birthday = p.Birthday;
-            this.Gender = p.Gender;
+            this.MrnNumber = p.MrnNumber;
             this.ParticipantType = p.ParticipantType;
-            this.Description = p.Description;
+            this.Diagnosis = p.Diagnosis;
             this.Archived = p.Archived;
         }
     }

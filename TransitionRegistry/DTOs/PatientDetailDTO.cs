@@ -7,34 +7,23 @@ using TransitionRegistry.Models;
 
 namespace TransitionRegistry.DTOs
 {
-    public class PatientDetailDTO
+    public class PatientDetailDTO : PatientDTO
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string MrnNumber { get; set; }
-        public DateTime Birthday { get; set; }
         public Gender Gender { get; set; }
-        public ParticipantType ParticipantType { get; set; }
+        public Race Race { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
         public string Description { get; set; }
-        [DefaultValue(false)]
-        public Boolean Archived { get; set; }
-        public String ArchiveDescription { get; set; }
         public ICollection<StudyDTO> Studies { get; set; }
+        public String ArchiveDescription { get; set; }
 
-        public PatientDetailDTO() { }
-
-        public PatientDetailDTO(Patient p)
+        public PatientDetailDTO(Patient p) : base(p)
         {
-            this.Id = p.Id;
-            this.Name = p.Name;
-            this.MrnNumber = p.MrnNumber;
-            this.Birthday = p.Birthday;
             this.Gender = p.Gender;
-            this.ParticipantType = p.ParticipantType;
+            this.Race = p.Race;
             this.Description = p.Description;
-            this.Archived = p.Archived;
-            this.ArchiveDescription = p.ArchiveDescription;
             this.Studies = p.Studies.Select(s => new StudyDTO(s)).ToList();
+            this.ArchiveDescription = p.ArchiveDescription;
         }
     }
 }

@@ -21,48 +21,20 @@ namespace TransitionRegistry.Controllers
         private TransitionRegistryContext db = new TransitionRegistryContext();
 
         // GET: api/Patients
-        public IQueryable<PatientDTO> GetPatients()
+        public IEnumerable<PatientDTO> GetPatients()
         {
-            return from p in db.Patients
-                   where p.Archived == false
-                   select new PatientDTO()
-                   {
-                        Id = p.Id,
-                        Name = p.Name,
-                        MrnNumber = p.MrnNumber,
-                        Birthday = p.Birthday,
-                        Gender = p.Gender,
-                        ParticipantType = p.ParticipantType,
-                        Description = p.Description,
-                        Archived = p.Archived,
-                   };
+            return db.Patients.Where(p => p.Archived == false)
+                .AsEnumerable()
+                .Select(p => new PatientDTO(p));
         }
 
         // GET: api/Patients/5
         [ResponseType(typeof(Patient))]
         public async Task<IHttpActionResult> GetPatient(int id)
         {
-            var patient = await db.Patients.Include(p => p.Studies).Select(p =>
-                new PatientDetailDTO()
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    MrnNumber = p.MrnNumber,
-                    Birthday = p.Birthday,
-                    Gender = p.Gender,
-                    ParticipantType = p.ParticipantType,
-                    Description = p.Description,
-                    Archived = p.Archived,
-                    ArchiveDescription = p.ArchiveDescription,
-                    Studies = p.Studies.Select(s => new StudyDTO()
-                    {
-                        Id = s.Id,
-                        Name = s.Name,
-                        ShortCode = s.ShortCode,
-                        Archived = s.Archived
-                    }).ToList()
-                }
-            ).SingleOrDefaultAsync(s => s.Id == id);
+            var patient = new PatientDetailDTO(
+                db.Patients.Include(p => p.Studies).First(p => p.Id == id)
+            );
 
             if (patient == null)
             {

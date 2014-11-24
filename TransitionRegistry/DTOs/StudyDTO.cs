@@ -13,12 +13,11 @@ namespace TransitionRegistry.DTOs
         public string ShortCode { get; set; }
         public Boolean Archived { get; set; }
 
-        public StudyDTO() { }
-
         public StudyDTO(Study s)
         {
             this.Id = s.Id;
             this.Name = s.Name;
+            this.ShortCode = s.ShortCode;
             this.Archived = s.Archived;
         }
 

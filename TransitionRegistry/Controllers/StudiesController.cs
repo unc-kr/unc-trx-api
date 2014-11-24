@@ -21,43 +21,20 @@ namespace TransitionRegistry.Controllers
         private TransitionRegistryContext db = new TransitionRegistryContext();
 
         // GET: api/Studies
-        public IQueryable<StudyDTO> GetStudies()
+        public IEnumerable<StudyDTO> GetStudies()
         {
-            return from s in db.Studies
-                   where s.Archived == false
-                   select new StudyDTO()
-                   {
-                        Id = s.Id,
-                        Name = s.Name,
-                        ShortCode = s.ShortCode,
-                        Archived = s.Archived
-                   };
+            return db.Studies.Where(s => s.Archived == false)
+                .AsEnumerable()
+                .Select(s => new StudyDTO(s));
         }
 
         // GET: api/Studies/5
         [ResponseType(typeof(StudyDetailDTO))]
         public async Task<IHttpActionResult> GetStudy(int id)
         {
-            var study = await db.Studies.Include(s => s.Patients).Select(s =>
-                new StudyDetailDTO()
-                {
-                    Id = s.Id,
-                    Name = s.Name,
-                    ShortCode = s.ShortCode,
-                    Archived = s.Archived,
-                    ArchiveDescription = s.ArchiveDescription,
-                    Patients = s.Patients.Select(p => new PatientDTO()
-                    {
-                        Id = p.Id,
-                        Name = p.Name,
-                        MrnNumber = p.MrnNumber,
-                        Birthday = p.Birthday,
-                        Gender = p.Gender,
-                        ParticipantType = p.ParticipantType,
-                        Archived = p.Archived
-                    }).ToList()
-                }
-            ).SingleOrDefaultAsync(s => s.Id == id);
+            var study = new StudyDetailDTO(
+                db.Studies.Include(s => s.Patients).First(s => s.Id == id)
+            );
             
             if (study == null)
             {
