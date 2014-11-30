@@ -159,6 +159,8 @@
     <Content Include="lib\fontawesome-webfont.svg" />
     <Content Include="lib\json3.js" />
     <Content Include="lib\moment.js" />
+    <Content Include="lib\ng-quick-date-plus-default-theme.css" />
+    <Content Include="lib\ng-quick-date.min.js" />
     <Content Include="lib\underscore.js" />
     <Content Include="login.html" />
     <Content Include="robots.txt" />

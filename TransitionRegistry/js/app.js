@@ -7,8 +7,19 @@ var app = angular.module('uncTrxApp', [
   'ngRoute',
   'ngSanitize',
   'ngTouch',
-  'ngInputDate'
+  'ngInputDate',
+  'ngQuickDate'
 ]);
+
+app.config(function (ngQuickDateDefaultsProvider) {
+    // Configure with icons from font-awesome
+    return ngQuickDateDefaultsProvider.set({
+        closeButtonHtml: "<i class='fa fa-times'></i>",
+        buttonIconHtml: "<i class='fa fa-calendar'></i>",
+        nextLinkHtml: "<i class='fa fa-chevron-right'></i>",
+        prevLinkHtml: "<i class='fa fa-chevron-left'></i>"
+    });
+});
 
 app.config(function ($routeProvider) {
   $routeProvider
