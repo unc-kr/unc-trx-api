@@ -11,11 +11,7 @@ angular.module('uncTrxApp')
       $location.path('/patients/' + $scope.patient.id + '/edit');
     }
 
-    $scope.deletePatient = function() {
-      if(confirm("Are you sure?")) {
-        Patients.delete($scope.patient, function() {
-          $location.path('/patients');
-        });
-      }
+    $scope.archivePatient = function() {
+      $location.path('/patients/' + $scope.patient.id + '/archive');
     }
   });

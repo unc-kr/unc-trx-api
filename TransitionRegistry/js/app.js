@@ -44,6 +44,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'js/patients/patient-form-view.html',
       controller: 'PatientEditCtrl'
     })
+    .when('/patients/:id/archive', {
+      templateUrl: 'js/patients/patient-archive-form.html',
+      controller: 'PatientArchiveCtrl'
+    })
     .when('/studies', {
       templateUrl: 'js/studies/studies-view.html',
       controller: 'StudiesCtrl'
@@ -63,6 +67,10 @@ app.config(function ($routeProvider) {
     .when('/studies/:id/enrollments', {
       templateUrl: 'js/studies/study-enroll-view.html',
       controller: 'StudyEnrollCtrl'
+    })
+    .when('/studies/:id/archive', {
+      templateUrl: 'js/studies/study-archive-form.html',
+      controller: 'StudyArchiveCtrl'
     })
     .when('/help', {
       templateUrl: 'js/help/help-view.html',

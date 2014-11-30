@@ -15,11 +15,7 @@ angular.module('uncTrxApp')
       $location.path('/studies/' + $scope.study.id + '/enrollments');
     }
 
-    $scope.deleteStudy = function() {
-      if(confirm("Are you sure?")) {
-        Studies.delete($scope.study, function() {
-          $location.path('/studies');
-        });
-      }
+    $scope.archiveStudy = function() {
+      $location.path('/studies/' + $scope.study.id + '/archive');
     }
   });

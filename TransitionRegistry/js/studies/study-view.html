@@ -22,7 +22,7 @@
 
     <p>
       <a class="btn btn-info btn-sm" ng-click="editStudy()"><i class="fa fa-pencil"></i> Edit</a>
-      <a ng-if="!study.archived" class="btn btn-warning btn-sm" ng-click="deleteStudy()"><i class="fa fa-archive"></i> Archive</a>
+      <a ng-if="!study.archived" class="btn btn-warning btn-sm" ng-click="archiveStudy()"><i class="fa fa-archive"></i> Archive</a>
       <span ng-if="study.archived" class="label label-default">Archived</span>
     </p>
     <p>

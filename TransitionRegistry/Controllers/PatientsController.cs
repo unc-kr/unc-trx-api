@@ -40,10 +40,13 @@ namespace TransitionRegistry.Controllers
             {
                 return NotFound();
             }
+
+            /* NON-ADMIN
             if (patient.Archived == true)
             {
                 return NotFound();
             }
+            */
 
             return Ok(patient);
         }

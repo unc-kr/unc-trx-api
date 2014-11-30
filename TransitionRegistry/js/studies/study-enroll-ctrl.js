@@ -25,7 +25,7 @@ angular.module('uncTrxApp')
     };
 
     $scope.unenrollPatient = function(patient) {
-      $http.delete(ApiBaseUrl + 'api/studies/' + $scope.study.id + '/patients/' + patient.id).then(function() {
+      $http['delete'](ApiBaseUrl + 'api/studies/' + $scope.study.id + '/patients/' + patient.id).then(function() {
         $scope.refresh();
       });
     };

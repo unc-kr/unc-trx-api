@@ -1,0 +1,48 @@
+<a class="btn btn-default" ng-click="back()"><i class="fa fa-chevron-left"></i> Back</a>
+
+<h2>Archive Study {{study.name}}</h2>
+
+<form class="form-horizontal" role="form" ng-submit="checkForm(archiveForm, submit)" name="archiveForm">
+
+  <div class="form-group">
+    <label for="desc" class="col-sm-2 control-label">Reason of Archival</label>
+    <div class="col-sm-10" ng-class="{ 'has-error' : archiveForm.desc.$invalid && archiveForm.desc.$dirty }">
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="study.archiveDescriptionOption" name="desc" value="Finished" 
+                 required>
+          Finished
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="study.archiveDescriptionOption" name="desc" value="Other">
+          Other
+        </label>
+      </div>
+      <p ng-show="archiveForm.desc.$invalid && archiveForm.desc.$dirty" class="help block">
+        Reason is required.
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group" ng-show="study.archiveDescriptionOption == 'Other'">
+    <label for="input-description" class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-10" ng-class="{ 'has-error' : archiveForm.other.$invalid && archiveForm.other.$dirty }">
+      <textarea ng-model="study.archiveDescriptionOther" class="form-control" id="input-description" placeholder="Add comments here..."
+                ng-required="study.archiveDescriptionOption == 'Other'" ng-maxlength="2048" name="other">
+      </textarea>
+      <p ng-show="archiveForm.other.$invalid && archiveForm.other.$dirty" class="help block">
+        Description must be no longer than 2048 characters.
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" class="btn btn-default"/>
+      <a class="btn btn-default" ng-click="back()">Cancel</a>
+    </div>
+  </div>
+
+</form>
