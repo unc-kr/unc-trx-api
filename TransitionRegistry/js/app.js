@@ -72,9 +72,10 @@ app.config(function ($routeProvider) {
     });
 });
 
-app.run(function ($route, $rootScope, $location, $window) {
+app.run(function ($route, $rootScope, $location, $window, checkForm) {
   $rootScope.loc = $location.path;
   $rootScope.back = function() {
     $window.history.back();
   };
+  $rootScope.checkForm = checkForm;
 });

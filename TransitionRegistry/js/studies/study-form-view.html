@@ -1,23 +1,47 @@
-<form class="form-horizontal" role="form" ng-submit="submit()">
+<form class="form-horizontal" role="form" ng-submit="checkForm(studyForm, submit)" name="studyForm">
 
   <div class="form-group">
     <label for="input-name" class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
-      <input type="text" ng-model="study.name" class="form-control" id="input-name" placeholder="Name">
+    <div class="col-sm-10" ng-class="{ 'has-error' : studyForm.name.$invalid && studyForm.name.$dirty }">
+      <input type="text" ng-model="study.name" class="form-control" id="input-name" placeholder="Name" name="name"
+             required ng-maxlength="512">
+      <p ng-show="studyForm.name.$invalid && studyForm.name.$dirty" class="help-block">
+        Name is required (maximum length of 512).
+      </p>
     </div>
   </div>
 
   <div class="form-group">
     <label for="input-short-code" class="col-sm-2 control-label">Short Code</label>
-    <div class="col-sm-10">
-      <input type="text" ng-model="study.shortCode" class="form-control" id="input-short-code" placeholder="Short Code">
+    <div class="col-sm-10" ng-class="{ 'has-error' : studyForm.shortcode.$invalid && studyForm.shortcode.$dirty }">
+      <input type="text" ng-model="study.shortCode" class="form-control" id="input-short-code" placeholder="Short Code"
+             required ng-maxlength="64" name="shortcode">
+      <p ng-show="studyForm.shortcode.$invalid && studyForm.shortcode.$dirty" class="help-block">
+        Short Code is required (maximum length of 64).
+      </p>
     </div>
   </div>
 
   <div class="form-group">
     <label for="input-grant" class="col-sm-2 control-label">Grant</label>
-    <div class="col-sm-10">
-      <input type="text" ng-model="study.grant" class="form-control" id="input-grant" placeholder="Grant">
+    <div class="col-sm-10" ng-class="{ 'has-error' : studyForm.grant.$invalid && studyForm.grant.$dirty }">
+      <input type="text" ng-model="study.grant" class="form-control" id="input-grant" placeholder="Grant" 
+             ng-maxlength="512" name="grant">
+      <p ng-show="studyForm.grant.$invalid && studyForm.grant.$dirty" class="help-block">
+        Grant must be no longer than 512 characters.
+      </p>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="input-description" class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-10" ng-class="{ 'has-error' : studyForm.desc.$invalid && studyForm.desc.$dirty }">
+      <textarea ng-model="study.description" class="form-control" id="input-description" placeholder="Add comments here..."
+                ng-maxlength="2048" name="desc">
+      </textarea>
+      <p ng-show="studyForm.desc.$invalid && studyForm.desc.$dirty" class="help block">
+        Description must be no longer than 2048 characters.
+      </p>
     </div>
   </div>
 

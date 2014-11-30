@@ -6,7 +6,7 @@ angular.module('uncTrxApp')
       $scope.patient = patient;
     });
 
-    $scope.submit = function() {
+    $scope.submit = function () {
       Patients.update($scope.patient, $scope.patient, function(patient) {
         $location.path('/patients/' + patient.id);
       });

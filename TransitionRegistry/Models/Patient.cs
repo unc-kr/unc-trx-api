@@ -11,7 +11,8 @@ namespace TransitionRegistry.Models
     public enum Gender
     {
         Female,
-        Male
+        Male,
+        Other
     }
 
     public enum ParticipantType
@@ -33,7 +34,8 @@ namespace TransitionRegistry.Models
         AfricanAmerican,
         Asian,
         NativeAmerican,
-        PacificIslander
+        PacificIslander,
+        Other
     }
 
 
@@ -44,11 +46,13 @@ namespace TransitionRegistry.Models
         [Required, MinLength(2)]
         public string Name { get; set; }
 
-        [Column(TypeName = "Date")]
+        [Required, Column(TypeName = "Date")]
         public DateTime Birthday { get; set; }
 
+        [Required]
         public Gender Gender { get; set; }
 
+        [Required]
         public Race Race { get; set; }
 
         [Required, MinLength(6), RegularExpression(@"^\d{6,}$")]
@@ -60,8 +64,10 @@ namespace TransitionRegistry.Models
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
+        [Required]
         public ParticipantType ParticipantType { get; set; }
 
+        [Required]
         public Diagnosis Diagnosis { get; set; }
 
         [MaxLength(2048)]

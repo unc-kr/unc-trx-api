@@ -1,140 +1,193 @@
-<form class="form-horizontal" role="form" ng-submit="submit()">
+<form class="form-horizontal" role="form" ng-submit="checkForm(patientForm, submit)" name="patientForm">
 
   <div class="form-group">
     <label for="input-name" class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
-      <input type="text" ng-model="patient.name" class="form-control" id="input-name" placeholder="Name">
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.name.$invalid && patientForm.name.$dirty }">
+      <input type="text" ng-model="patient.name" class="form-control" id="input-name" name="name" placeholder="Name"
+         required ng-minlength="2">
+      <p ng-show="patientForm.name.$invalid && patientForm.name.$dirty" class="help-block">
+        Name is required (minimum length of 2).
+      </p>
     </div>
   </div>
 
   <div class="form-group">
     <label for="input-mrn" class="col-sm-2 control-label">MRN Number</label>
-    <div class="col-sm-10">
-      <input type="text" ng-model="patient.mrnNumber" class="form-control" id="input-mrn" placeholder="MRN Number">
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.mrn.$invalid && patientForm.mrn.$dirty }">
+      <input type="text" ng-model="patient.mrnNumber" class="form-control" id="input-mrn" name="mrn" placeholder="MRN Number"
+             required minlength="6">
+      <p ng-show="patientForm.birthday.$invalid && patientForm.birthday.$dirty" class="help block">
+        MRN is required (mininum length of 6).
+      </p>
     </div>
   </div>
 
   <div class="form-group">
     <label for="input-birthday" class="col-sm-2 control-label">Birthday</label>
-    <div class="col-sm-10">
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.birthday.$invalid && patientForm.birthday.$dirty }">
       <quick-datepicker ng-model='patient.birthday' disable-timepicker='true'></quick-datepicker>
+      <input type="hidden" ng-model="patient.birthday" name="birthday" required>
+      <p ng-show="patientForm.birthday.$invalid && patientForm.birthday.$dirty" class="help block">
+        Birthday is required.
+      </p>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="input-gender" class="col-sm-2 control-label">Gender</label>
-    <div class="col-sm-10">
+    <label for="inputgender" class="col-sm-2 control-label">Gender</label>
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.inputgender.$invalid && patientForm.inputgender.$dirty }">
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.gender" name="input-gender" value="Male">
+          <input type="radio" ng-model="patient.gender" name="inputgender" value="Male" 
+                 required>
           Male
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.gender" name="input-gender" value="Female">
+          <input type="radio" ng-model="patient.gender" name="inputgender" value="Female">
           Female
         </label>
       </div>
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="patient.gender" name="inputgender" value="Other">
+          Other
+        </label>
+      </div>
+      <p ng-show="patientForm.inputgender.$invalid && patientForm.inputgender.$dirty" class="help block">
+        Gender is required.
+      </p>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="input-race" class="col-sm-2 control-label">Race</label>
-    <div class="col-sm-10">
+    <label for="inputrace" class="col-sm-2 control-label">Race</label>
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.inputrace.$invalid && patientForm.inputrace.$dirty }">
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.race" name="input-race" value="Caucasian">
+          <input type="radio" ng-model="patient.race" name="inputrace" value="Caucasian"
+                 required>
           Caucasian
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.race" name="input-race" value="AfricanAmerican">
+          <input type="radio" ng-model="patient.race" name="inputrace" value="AfricanAmerican">
           Black or African American
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.race" name="input-race" value="Asian">
+          <input type="radio" ng-model="patient.race" name="inputrace" value="Asian">
           Asian
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.race" name="input-race" value="NativeAmerican">
+          <input type="radio" ng-model="patient.race" name="inputrace" value="NativeAmerican">
           American Indian or Alaska Native
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.race" name="input-race" value="PacificIslander">
+          <input type="radio" ng-model="patient.race" name="inputrace" value="PacificIslander">
           Native Hawaiian or Other Pacific Islander
         </label>
       </div>
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="patient.race" name="inputrace" value="Other">
+          Other
+        </label>
+      </div>
+      <p ng-show="patientForm.inputrace.$invalid && patientForm.inputrace.$dirty" class="help block">
+        Race is required.
+      </p>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="input-type" class="col-sm-2 control-label">Participant Type</label>
-    <div class="col-sm-10">
+    <label for="inputparttype" class="col-sm-2 control-label">Participant Type</label>
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.inputparttype.$invalid && patientForm.inputparttype.$dirty }">
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.participantType" name="input-type" value="Pediatric">
+          <input type="radio" ng-model="patient.participantType" name="inputparttype" value="Pediatric"
+                 required>
           Pediatric
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.participantType" name="input-type" value="Adult">
+          <input type="radio" ng-model="patient.participantType" name="inputparttype" value="Adult">
           Adult
         </label>
       </div>
+      <p ng-show="patientForm.inputparttype.$invalid && patientForm.inputparttype.$dirty" class="help block">
+        Participant type is required.
+      </p>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="input-diagnosis" class="col-sm-2 control-label">Diagnosis</label>
-    <div class="col-sm-10">
+    <label for="inputdiag" class="col-sm-2 control-label">Diagnosis</label>
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.inputdiag.$invalid && patientForm.inputdiag.$dirty }">
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.diagnosis" name="input-diagnosis" value="DiagA">
+          <input type="radio" ng-model="patient.diagnosis" name="inputdiag" value="DiagA"
+                 required>
           DiagA
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.diagnosis" name="input-diagnosis" value="DiagB">
+          <input type="radio" ng-model="patient.diagnosis" name="inputdiag" value="DiagB">
           DiagB
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" ng-model="patient.diagnosis" name="input-diagnosis" value="DiagC">
+          <input type="radio" ng-model="patient.diagnosis" name="inputdiag" value="DiagC">
           DiagC
         </label>
       </div>
+      <p ng-show="patientForm.inputdiag.$invalid && patientForm.inputdiag.$dirty" class="help block">
+        Diagnosis is required.
+      </p>
     </div>
   </div>
 
   <div class="form-group">
     <label for="input-email" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" ng-model="patient.email" class="form-control" id="input-email" placeholder="abc@example.com">
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.email.$invalid && patientForm.email.$dirty }">
+      <input type="email" ng-model="patient.email" class="form-control" id="input-email" placeholder="abc@example.com"
+             ng-minlength="3" name="email">
+      <p ng-show="patientForm.email.$invalid && patientForm.email.$dirty" class="help block">
+        Email must be valid.
+      </p>
     </div>
   </div>
 
   <div class="form-group">
     <label for="input-phone" class="col-sm-2 control-label">Phone Number</label>
-    <div class="col-sm-10">
-      <input type="tel" ng-model="patient.phoneNumber" class="form-control" id="input-phone" placeholder="(xxx) xxx-xxxx">
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.phone.$invalid && patientForm.phone.$dirty }">
+      <input type="tel" ng-model="patient.phoneNumber" class="form-control" id="input-phone" placeholder="(xxx) xxx-xxxx"
+             ng-minlength="10" name="phone">
+      <p ng-show="patientForm.phone.$invalid && patientForm.phone.$dirty" class="help block">
+        Phone must be valid.
+      </p>
     </div>
   </div>
   
   <div class="form-group">
     <label for="input-description" class="col-sm-2 control-label">Description</label>
-    <div class="col-sm-10">
-      <textarea ng-model="patient.description" class="form-control" id="input-description" placeholder="Add comments here..."></textarea>
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.desc.$invalid && patientForm.desc.$dirty }">
+      <textarea ng-model="patient.description" class="form-control" id="input-description" placeholder="Add comments here..."
+                ng-maxlength="2048" name="desc">
+      </textarea>
+      <p ng-show="patientForm.desc.$invalid && patientForm.desc.$dirty" class="help block">
+        Description must be no longer than 2048 characters.
+      </p>
     </div>
   </div>
 
