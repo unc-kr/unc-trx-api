@@ -8,7 +8,8 @@ var app = angular.module('uncTrxApp', [
   'ngSanitize',
   'ngTouch',
   'ngInputDate',
-  'ngQuickDate'
+  'ngQuickDate',
+  'ng.httpLoader'
 ]);
 
 app.config(function (ngQuickDateDefaultsProvider) {
@@ -70,6 +71,10 @@ app.config(function ($routeProvider) {
     .otherwise({
       redirectTo: '/home'
     });
+});
+
+app.config(function (httpMethodInterceptorProvider) {
+  httpMethodInterceptorProvider.whitelistDomain('');
 });
 
 app.run(function ($route, $rootScope, $location, $window, checkForm) {

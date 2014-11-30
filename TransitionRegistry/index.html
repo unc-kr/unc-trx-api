@@ -20,7 +20,10 @@
           <li active-link="active"><a href="#/studies">Studies</a></li>
           <li active-link="active"><a href="#/help">Help</a></li>
         </ul>
-        <h1 class="text-muted">UNC TRX Registry</h1>
+        <h1 class="text-muted">
+          UNC TRX Registry
+          <span ng-http-loader template='/js/common/loading.html'></span ttl="10">
+        </h1>
       </div>
 
       <div ng-view></div>
@@ -58,6 +61,7 @@
     <script src="/lib/angular-route.js"></script>
     <script src="/lib/angular-input-date.js"></script>
     <script src="/lib/ng-quick-date.min.js"></script>
+    <script src="/lib/angular-http-loader.min.js"></script>
     <script src="/lib/moment.js"></script>
     <script src="/lib/underscore.js"></script>
 
