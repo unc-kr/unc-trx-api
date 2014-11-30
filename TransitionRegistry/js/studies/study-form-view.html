@@ -1,0 +1,31 @@
+<form class="form-horizontal" role="form" ng-submit="submit()">
+
+  <div class="form-group">
+    <label for="input-name" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" ng-model="study.name" class="form-control" id="input-name" placeholder="Name">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="input-short-code" class="col-sm-2 control-label">Short Code</label>
+    <div class="col-sm-10">
+      <input type="text" ng-model="study.shortCode" class="form-control" id="input-short-code" placeholder="Short Code">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="input-grant" class="col-sm-2 control-label">Grant</label>
+    <div class="col-sm-10">
+      <input type="text" ng-model="study.grant" class="form-control" id="input-grant" placeholder="Grant">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" class="btn btn-default"/>
+      <a class="btn btn-default" ng-click="back()">Cancel</a>
+    </div>
+  </div>
+
+</form>

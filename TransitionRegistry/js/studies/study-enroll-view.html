@@ -1,0 +1,114 @@
+<a class="btn btn-default" ng-click="back()"><i class="fa fa-chevron-left"></i> Back</a>
+
+<h2>
+  Managing Enrollments of [{{study.shortCode}}] {{study.name}}
+</h2>
+
+<h3>Patients Enrolled</h3>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>MRN Number</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Birth Date</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>
+        <input class="input-sm form-control" type="search" placeholder="Filter by MRN Number" ng-model="filters.mrnNumber">
+      </th>
+      <th>
+        <input class="input-sm form-control" type="search" placeholder="Filter by Name" ng-model="filters.name">
+      </th>
+      <th>
+        <select class="input-sm form-control" ng-model="filters.gender" ng-init="filters.gender = '!'">
+          <option value="!">Filter by Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </th>
+      <th>
+        <input class="input-sm form-control" type="search" placeholder="Filter by Birth Date" ng-model="filters.birthday">
+      </th>
+      <th>
+        <select class="input-sm form-control" ng-model="filters.participantType" ng-init="filters.participantType = '!'">
+          <option value="!">Filter by Type</option>
+          <option value="Adult">Adult</option>
+          <option value="Pediatric">Pediatric</option>
+        </select>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="patient in patients | filter:{enrolled:true} |  filter:{mrnNumber: filters.mrnNumber, name: filters.name, birthday: filters.birthday} | filter:{gender: filters.gender, participantType: filters.participantType}:true">
+      <td>{{patient.mrnNumber}}</td>
+      <td>{{patient.name}}</td>
+      <td>{{patient.gender}}</td>
+      <td>{{patient.birthday | date:shortDate}}</td>
+      <td>{{patient.participantType}}</td>
+      <td>
+        <a ng-if="!patient.enrolled" class="btn btn-success" ng-click="enrollPatient(patient)"><i class="fa fa-plus"></i> Enroll</a>
+        <a ng-if="patient.enrolled" class="btn btn-danger" ng-click="unenrollPatient(patient)"><i class="fa fa-minus"></i> Unenroll</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3>Patients Not Enrolled</h3>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>MRN Number</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Birth Date</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>
+        <input class="input-sm form-control" type="search" placeholder="Filter by MRN Number" ng-model="filters.mrnNumber">
+      </th>
+      <th>
+        <input class="input-sm form-control" type="search" placeholder="Filter by Name" ng-model="filters.name">
+      </th>
+      <th>
+        <select class="input-sm form-control" ng-model="filters.gender" ng-init="filters.gender = '!'">
+          <option value="!">Filter by Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </th>
+      <th>
+        <input class="input-sm form-control" type="search" placeholder="Filter by Birth Date" ng-model="filters.birthday">
+      </th>
+      <th>
+        <select class="input-sm form-control" ng-model="filters.participantType" ng-init="filters.participantType = '!'">
+          <option value="!">Filter by Type</option>
+          <option value="Adult">Adult</option>
+          <option value="Pediatric">Pediatric</option>
+        </select>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="patient in patients | filter:{enrolled:false} | filter:{mrnNumber: filters.mrnNumber, name: filters.name, birthday: filters.birthday} | filter:{gender: filters.gender, participantType: filters.participantType}:true">
+      <td>{{patient.mrnNumber}}</td>
+      <td>{{patient.name}}</td>
+      <td>{{patient.gender}}</td>
+      <td>{{patient.birthday | date:shortDate}}</td>
+      <td>{{patient.participantType}}</td>
+      <td>
+        <a ng-if="!patient.enrolled" class="btn btn-success" ng-click="enrollPatient(patient)"><i class="fa fa-plus"></i> Enroll</a>
+        <a ng-if="patient.enrolled" class="btn btn-danger" ng-click="unenrollPatient(patient)"><i class="fa fa-minus"></i> Unenroll</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

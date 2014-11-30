@@ -1,0 +1,41 @@
+<a class="btn btn-default" ng-click="back()"><i class="fa fa-chevron-left"></i> Back</a>
+
+<h2>
+  [{{study.shortCode}}] {{study.name}}
+</h2>
+
+<div class="row">
+  <div class="col-md-3">
+    <h3>Details</h3>
+
+    <p>Name: {{study.name}}</p>
+    <p>Short Code: {{study.shortCode}}</p>
+    <p>Grant: {{study.grant}}</p>
+
+    <div ng-if="study.archived">
+      <h3>Archival Reason</h3>
+      <p>{{study.archiveDescription}}</p>
+    </div>
+
+
+    <h3>Actions</h3>
+
+    <p>
+      <a class="btn btn-info btn-sm" ng-click="editStudy()"><i class="fa fa-pencil"></i> Edit</a>
+      <a ng-if="!study.archived" class="btn btn-warning btn-sm" ng-click="deleteStudy()"><i class="fa fa-archive"></i> Archive</a>
+      <span ng-if="study.archived" class="label label-default">Archived</span>
+    </p>
+    <p>
+      <a class="btn btn-info btn-sm" ng-click="editEnrollments()">
+        <i class="fa fa-pencil"></i> Manage Enrollments
+      </a>
+    </p>
+
+  </div>
+
+  <div class="col-md-9">
+    <h3>Patients enrolled ({{patients.length}})</h3>
+    <div ng-include="'/js/patients/patients-table-view.html'"></div>
+  </div>
+</div>
+
