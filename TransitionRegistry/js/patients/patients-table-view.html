@@ -4,7 +4,7 @@
       <th>MRN Number</th>
       <th>Name</th>
       <th>Gender</th>
-      <th>Birth Date</th>
+      <th>Age</th>
       <th>Type</th>
     </tr>
     <tr>
@@ -22,7 +22,7 @@
         </select>
       </th>
       <th>
-        <input class="input-sm form-control" type="search" placeholder="Filter by Birth Date" ng-model="filters.birthday">
+        <input class="input-sm form-control" type="search" placeholder="Filter by Age" ng-model="filters.age">
       </th>
       <th>
         <select class="input-sm form-control" ng-model="filters.participantType" ng-init="filters.participantType = '!'">
@@ -35,11 +35,11 @@
   </thead>
   <tbody>
     <tr ng-click="loc('/patients/' + patient.id)"
-        ng-repeat="patient in patients | filter:{mrnNumber: filters.mrnNumber, name: filters.name, birthday: filters.birthday} | filter:{gender: filters.gender, participantType: filters.participantType}:true">
+        ng-repeat="patient in patients | filter:{mrnNumber: filters.mrnNumber, name: filters.name, age: filters.age} | filter:{gender: filters.gender, participantType: filters.participantType}:true">
       <td>{{patient.mrnNumber}}</td>
       <td>{{patient.name}}</td>
       <td>{{patient.gender}}</td>
-      <td>{{patient.birthday | date:shortDate}}</td>
+      <td>{{patient.age}}</td>
       <td>{{patient.participantType}}</td>
     </tr>
   </tbody>

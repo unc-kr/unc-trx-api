@@ -24,10 +24,32 @@
 
   <div class="form-group">
     <label for="input-birthday" class="col-sm-2 control-label">Birthday</label>
-    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.birthday.$invalid && patientForm.birthday.$dirty }">
-      <quick-datepicker ng-model='patient.birthday' disable-timepicker='true'></quick-datepicker>
-      <input type="hidden" ng-model="patient.birthday" name="birthday" required>
-      <p ng-show="patientForm.birthday.$invalid && patientForm.birthday.$dirty" class="help block">
+    <div class="col-sm-10" ng-class="{ 'has-error' : (patientForm.month.$invalid && patientForm.month.$dirty)
+               || (patientForm.day.$invalid && patientForm.day.$dirty)
+               || (patientForm.year.$invalid && patientForm.year.$dirty) }">
+      <div class="row">
+        <div class="col-xs-2">
+          <select class="form-control" name="month" ng-minlength="1" required ng-model="patient.month">
+            <option value="">Month</option>
+            <option ng-repeat="month in _.range(1, 13)" ng-value="month">{{month}}</option>
+          </select>
+        </div>
+        <div class="col-xs-2">
+          <select class="form-control" name="day" ng-minlength="1" required ng-model="patient.day">
+            <option value="">Day</option>
+            <option ng-repeat="day in _.range(1, 32)" ng-value="day">{{day}}</option>
+          </select>
+        </div>
+        <div class="col-xs-2">
+          <select class="form-control" name="year" ng-minlength="1" required ng-model="patient.year" ng-init="currentYear = moment().year()">
+            <option value="">Year</option>
+            <option ng-repeat="year in _.range(currentYear, 1899, -1)" ng-value="year">{{year}}</option>
+          </select>
+        </div>
+      </div>
+      <p ng-show="(patientForm.month.$invalid && patientForm.month.$dirty)
+               || (patientForm.day.$invalid && patientForm.day.$dirty)
+               || (patientForm.year.$invalid && patientForm.year.$dirty)" class="help block">
         Birthday is required.
       </p>
     </div>
