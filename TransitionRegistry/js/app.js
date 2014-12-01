@@ -7,7 +7,8 @@ var app = angular.module('uncTrxApp', [
   'ngRoute',
   'ngSanitize',
   'ngTouch',
-  'ng.httpLoader'
+  'ng.httpLoader',
+  'angular-growl'
 ]);
 
 app.config(function ($routeProvider) {
@@ -71,6 +72,20 @@ app.config(function ($routeProvider) {
 
 app.config(function (httpMethodInterceptorProvider) {
   httpMethodInterceptorProvider.whitelistDomain('');
+});
+
+app.factory('growlInterceptor', function($q, growl) {
+  return {
+    responseError: function(rejection) {
+      console.log(rejection);
+      growl.addErrorMessage('Error ' + rejection.status + ': ' + rejection.statusText);
+      return $q.reject(rejection);
+    }
+  }
+});
+
+app.config(function($httpProvider) {
+  $httpProvider.interceptors.push('growlInterceptor');
 });
 
 app.run(function ($route, $rootScope, $location, $window, checkForm) {

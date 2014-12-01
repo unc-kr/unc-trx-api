@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('uncTrxApp')
-  .controller('PatientNewCtrl', function ($rootScope, $scope, $routeParams, $location, Patients) {
+  .controller('PatientNewCtrl', function ($rootScope, $scope, $routeParams, $location, Patients, growl) {
     $scope.patient = {};
 
     $scope.submit = function() {
