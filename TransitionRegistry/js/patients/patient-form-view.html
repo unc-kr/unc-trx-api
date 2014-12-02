@@ -172,6 +172,29 @@
       </p>
     </div>
   </div>
+
+  <div class="form-group">
+    <label for="input-address" class="col-sm-2 control-label">Address</label>
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.address.$invalid && patientForm.address.$dirty }">
+      <textarea ng-model="patient.address" class="form-control" id="input-address" placeholder="Number, Street, City, State"
+                ng-maxlength="128" name="address">
+      </textarea>
+      <p ng-show="patientForm.address.$invalid && patientForm.address.$dirty" class="help block">
+        Address must be no longer than 128 characters.
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="input-zip" class="col-sm-2 control-label">ZIP Code</label>
+    <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.zip.$invalid && patientForm.zip.$dirty }">
+      <input type="tel" ng-model="patient.zipCode" class="form-control" id="input-zip" placeholder="xxxxx"
+             ng-minlength="5" ng-maxlength="10" name="zip">
+      <p ng-show="patientForm.zip.$invalid && patientForm.zip.$dirty" class="help block">
+        ZIP Code must be valid (between 5 and 10 characters).
+      </p>
+    </div>
+  </div>
   
   <div class="form-group">
     <label for="input-description" class="col-sm-2 control-label">Description</label>

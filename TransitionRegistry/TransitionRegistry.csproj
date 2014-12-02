@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201412022006508_AddTimestamps.Designer.cs">
       <DependentUpon>201412022006508_AddTimestamps.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412022142319_AddAddress.cs" />
+    <Compile Include="Migrations\201412022142319_AddAddress.Designer.cs">
+      <DependentUpon>201412022142319_AddAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -254,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412022006508_AddTimestamps.resx">
       <DependentUpon>201412022006508_AddTimestamps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412022142319_AddAddress.resx">
+      <DependentUpon>201412022142319_AddAddress.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

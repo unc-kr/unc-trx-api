@@ -57,6 +57,12 @@ namespace TransitionRegistry.Models
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
+        [MaxLength(128)]
+        public string Address { get; set; }
+
+        [MinLength(5), MaxLength(10)]
+        public string ZipCode { get; set; }
+
         [Required]
         public ParticipantType ParticipantType { get; set; }
 
