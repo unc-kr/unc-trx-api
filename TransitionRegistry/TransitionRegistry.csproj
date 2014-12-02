@@ -202,7 +202,12 @@
     <Compile Include="Migrations\201412021912007_RemoveDiagnosis.Designer.cs">
       <DependentUpon>201412021912007_RemoveDiagnosis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412022006508_AddTimestamps.cs" />
+    <Compile Include="Migrations\201412022006508_AddTimestamps.Designer.cs">
+      <DependentUpon>201412022006508_AddTimestamps.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Study.cs" />
     <Compile Include="Models\TransitionRegistryContext.cs" />
@@ -246,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412021912007_RemoveDiagnosis.resx">
       <DependentUpon>201412021912007_RemoveDiagnosis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412022006508_AddTimestamps.resx">
+      <DependentUpon>201412022006508_AddTimestamps.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

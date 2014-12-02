@@ -32,7 +32,7 @@ namespace TransitionRegistry.Models
     }
 
 
-    public class Patient
+    public class Patient : EntityBase
     {
         public int Id { get; set; }
 

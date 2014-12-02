@@ -7,7 +7,7 @@ using System.Web;
 
 namespace TransitionRegistry.Models
 {
-    public class Study
+    public class Study : EntityBase
     {
         public int Id { get; set; }
 
