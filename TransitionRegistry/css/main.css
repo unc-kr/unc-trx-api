@@ -13,36 +13,40 @@ html {
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width:100%;
 }
 
 /* Custom page header */
 .header {
+  width:100%;
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 1em;
   background-color:#6699cc;
-  background-image:url("http://i.imgur.com/gfcIm5E.png");
-  background-position:left;
-  background-repeat:no-repeat;
-  height:75px;
+  background-image:url("http://i.imgur.com/uWHWvbz.png");
+  background-position:top;
+  background-repeat:repeat-x;
+  height:100px;
 }
 .header h1 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
   padding-bottom: 19px;
-  padding-top:15px;
-  font-size: 24px;
+  padding-top:30px;
+  font-size: 30px;
   color:#ffffff;
-  padding-left:125px;
+  padding-left:25px;
 }
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
+  padding:20px;
+  background-color:#656565;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  height:100px;
 }
 
 .container-narrow > hr {
@@ -63,6 +67,10 @@ table {
   background-position:top;
   background-repeat:repeat-x;
   border:5px solid #ffffff;
+  padding-left:0px;
+  padding-right:0px;
+
+
 }
 
 .nav.nav-pills a {
@@ -71,7 +79,6 @@ table {
 .nav.nav-pills a:hover {
   color: #6699cc;
 }
-
 
 .age-input {
   display: inline;
