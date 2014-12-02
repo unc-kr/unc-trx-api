@@ -48,7 +48,7 @@ namespace TransitionRegistry.Models
         [Required]
         public Race Race { get; set; }
 
-        [Required, MinLength(6), RegularExpression(@"^\d{6,}$")]
+        [Required, MinLength(7), RegularExpression(@"^\d{7,}$")]
         public string MrnNumber { get; set; }
 
         [DataType(DataType.EmailAddress)]

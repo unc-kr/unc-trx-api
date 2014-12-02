@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201411241919245_NewValidations.Designer.cs">
       <DependentUpon>201411241919245_NewValidations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412021912007_RemoveDiagnosis.cs" />
+    <Compile Include="Migrations\201412021912007_RemoveDiagnosis.Designer.cs">
+      <DependentUpon>201412021912007_RemoveDiagnosis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Study.cs" />
@@ -239,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411241919245_NewValidations.resx">
       <DependentUpon>201411241919245_NewValidations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412021912007_RemoveDiagnosis.resx">
+      <DependentUpon>201412021912007_RemoveDiagnosis.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

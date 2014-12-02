@@ -15,9 +15,9 @@
     <label for="input-mrn" class="col-sm-2 control-label">MRN Number</label>
     <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.mrn.$invalid && patientForm.mrn.$dirty }">
       <input type="text" ng-model="patient.mrnNumber" class="form-control" id="input-mrn" name="mrn" placeholder="MRN Number"
-             required ng-minlength="6">
+             required ng-minlength="7">
       <p ng-show="patientForm.mrn.$invalid && patientForm.mrn.$dirty" class="help block">
-        MRN is required (mininum length of 6).
+        MRN is required (mininum length of 7).
       </p>
     </div>
   </div>
@@ -150,7 +150,7 @@
       </p>
     </div>
   </div>
-  
+
   <div class="form-group">
     <label for="input-email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.email.$invalid && patientForm.email.$dirty }">
