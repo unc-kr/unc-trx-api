@@ -15,7 +15,6 @@ namespace TransitionRegistry.DTOs
         public Gender Gender { get; set; }
         public string MrnNumber { get; set; }
         public ParticipantType ParticipantType { get; set; }
-        public Diagnosis Diagnosis { get; set; }
         public Boolean Archived { get; set; }
 
         public PatientDTO(Patient p)
@@ -26,7 +25,6 @@ namespace TransitionRegistry.DTOs
             this.Gender = p.Gender;
             this.MrnNumber = p.MrnNumber;
             this.ParticipantType = p.ParticipantType;
-            this.Diagnosis = p.Diagnosis;
             this.Archived = p.Archived;
         }
     }

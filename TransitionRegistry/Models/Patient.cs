@@ -20,14 +20,7 @@ namespace TransitionRegistry.Models
         Pediatric,
         Adult
     }
-
-    public enum Diagnosis
-    {
-        DiagA,
-        DiagB,
-        DiagC
-    }
-
+    
     public enum Race
     {
         Caucasian,
@@ -66,9 +59,6 @@ namespace TransitionRegistry.Models
 
         [Required]
         public ParticipantType ParticipantType { get; set; }
-
-        [Required]
-        public Diagnosis Diagnosis { get; set; }
 
         [MaxLength(2048)]
         public string Description { get; set; }
