@@ -16,6 +16,10 @@ namespace TransitionRegistry.DTOs
         public ICollection<StudyDTO> Studies { get; set; }
         public String ArchiveDescription { get; set; }
 
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
+        public DateTime? LastAccessDate { get; set; }
+
         public PatientDetailDTO(Patient p) : base(p)
         {
             this.Race = p.Race;
@@ -24,6 +28,10 @@ namespace TransitionRegistry.DTOs
             this.Description = p.Description;
             this.Studies = p.Studies.Select(s => new StudyDTO(s)).ToList();
             this.ArchiveDescription = p.ArchiveDescription;
+
+            this.CreatedDate = p.CreatedDate;
+            this.LastModifiedDate = p.LastModifiedDate;
+            this.LastAccessDate = p.LastAccessDate;
         }
     }
 }
