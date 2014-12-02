@@ -23,9 +23,7 @@ namespace TransitionRegistry.Controllers
         // GET: api/Patients
         public IEnumerable<PatientDTO> GetPatients()
         {
-            return db.Patients.Where(p => p.Archived == false)
-                .AsEnumerable()
-                .Select(p => new PatientDTO(p));
+            return db.Patients.AsEnumerable().Select(p => new PatientDTO(p));
         }
 
         // GET: api/Patients/5

@@ -23,9 +23,7 @@ namespace TransitionRegistry.Controllers
         // GET: api/Studies
         public IEnumerable<StudyDTO> GetStudies()
         {
-            return db.Studies.Where(s => s.Archived == false)
-                .AsEnumerable()
-                .Select(s => new StudyDTO(s));
+            return db.Studies.AsEnumerable().Select(s => new StudyDTO(s));
         }
 
         // GET: api/Studies/5

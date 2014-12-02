@@ -1,3 +1,7 @@
+<div ng-init="filters.archive = false" ></div>
+<a class="btn btn-default" ng-hide="filters.archive" ng-click="filters.archive = true" >Show archived</a>
+<a class="btn btn-default" ng-show="filters.archive" ng-click="filters.archive = false">Hide archived</a>
+
 <table class="table table-striped table-bordered table-hover table-pointer">
   <thead>
     <tr>
@@ -19,7 +23,8 @@
   </thead>
   <tbody>
     <tr ng-click="loc('/studies/' + study.id)"
-        ng-repeat="study in studies | filter:{shortCode: filters.shortCode, name: filters.name, grant:filters.grant}">
+        ng-repeat="study in studies | filter:{archived: filters.archive ? undefined : false} | filter:{shortCode: filters.shortCode, name: filters.name, grant:filters.grant}"
+        ng-class="{warning: study.archived}">
       <td>{{study.shortCode}}</td>
       <td>{{study.name}}</td>
       <td>{{study.grant}}</td>

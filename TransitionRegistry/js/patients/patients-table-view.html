@@ -1,3 +1,7 @@
+<div ng-init="filters.archive = false" ></div>
+<a class="btn btn-default" ng-hide="filters.archive" ng-click="filters.archive = true" >Show archived</a>
+<a class="btn btn-default" ng-show="filters.archive" ng-click="filters.archive = false">Hide archived</a>
+
 <table class="table table-striped table-bordered table-hover table-pointer">
   <thead>
     <tr>
@@ -35,7 +39,8 @@
   </thead>
   <tbody>
     <tr ng-click="loc('/patients/' + patient.id)"
-        ng-repeat="patient in patients | filter:{mrnNumber: filters.mrnNumber, name: filters.name, age: filters.age} | filter:{gender: filters.gender, participantType: filters.participantType}:true">
+        ng-repeat="patient in patients | filter:{archived: filters.archive ? undefined : false} | filter:{name: filters.name, age: filters.age} | filter:{gender: filters.gender, participantType: filters.participantType}:true"
+        ng-class="{warning: patient.archived}">
       <td>{{patient.mrnNumber}}</td>
       <td>{{patient.name}}</td>
       <td>{{patient.gender}}</td>
@@ -44,3 +49,5 @@
     </tr>
   </tbody>
 </table>
+
+
