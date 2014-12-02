@@ -16,7 +16,7 @@
     <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.mrn.$invalid && patientForm.mrn.$dirty }">
       <input type="text" ng-model="patient.mrnNumber" class="form-control" id="input-mrn" name="mrn" placeholder="MRN Number"
              required ng-minlength="7">
-      <p ng-show="patientForm.mrn.$invalid && patientForm.mrn.$dirty" class="help block">
+      <p ng-show="patientForm.mrn.$invalid && patientForm.mrn.$dirty" class="help-block">
         MRN is required (mininum length of 7).
       </p>
     </div>
@@ -49,7 +49,7 @@
       </div>
       <p ng-show="(patientForm.month.$invalid && patientForm.month.$dirty)
                || (patientForm.day.$invalid && patientForm.day.$dirty)
-               || (patientForm.year.$invalid && patientForm.year.$dirty)" class="help block">
+               || (patientForm.year.$invalid && patientForm.year.$dirty)" class="help-block">
         Birthday is required.
       </p>
     </div>
@@ -77,7 +77,7 @@
           Other
         </label>
       </div>
-      <p ng-show="patientForm.inputgender.$invalid && patientForm.inputgender.$dirty" class="help block">
+      <p ng-show="patientForm.inputgender.$invalid && patientForm.inputgender.$dirty" class="help-block">
         Gender is required.
       </p>
     </div>
@@ -123,7 +123,7 @@
           Other
         </label>
       </div>
-      <p ng-show="patientForm.inputrace.$invalid && patientForm.inputrace.$dirty" class="help block">
+      <p ng-show="patientForm.inputrace.$invalid && patientForm.inputrace.$dirty" class="help-block">
         Race is required.
       </p>
     </div>
@@ -145,7 +145,7 @@
           Adult
         </label>
       </div>
-      <p ng-show="patientForm.inputparttype.$invalid && patientForm.inputparttype.$dirty" class="help block">
+      <p ng-show="patientForm.inputparttype.$invalid && patientForm.inputparttype.$dirty" class="help-block">
         Participant type is required.
       </p>
     </div>
@@ -156,7 +156,7 @@
     <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.email.$invalid && patientForm.email.$dirty }">
       <input type="email" ng-model="patient.email" class="form-control" id="input-email" placeholder="abc@example.com"
              ng-minlength="3" name="email">
-      <p ng-show="patientForm.email.$invalid && patientForm.email.$dirty" class="help block">
+      <p ng-show="patientForm.email.$invalid && patientForm.email.$dirty" class="help-block">
         Email must be valid.
       </p>
     </div>
@@ -167,7 +167,7 @@
     <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.phone.$invalid && patientForm.phone.$dirty }">
       <input type="tel" ng-model="patient.phoneNumber" class="form-control" id="input-phone" placeholder="(xxx) xxx-xxxx"
              ng-minlength="10" name="phone">
-      <p ng-show="patientForm.phone.$invalid && patientForm.phone.$dirty" class="help block">
+      <p ng-show="patientForm.phone.$invalid && patientForm.phone.$dirty" class="help-block">
         Phone must be valid.
       </p>
     </div>
@@ -179,7 +179,7 @@
       <textarea ng-model="patient.address" class="form-control" id="input-address" placeholder="Number, Street, City, State"
                 ng-maxlength="128" name="address">
       </textarea>
-      <p ng-show="patientForm.address.$invalid && patientForm.address.$dirty" class="help block">
+      <p ng-show="patientForm.address.$invalid && patientForm.address.$dirty" class="help-block">
         Address must be no longer than 128 characters.
       </p>
     </div>
@@ -190,7 +190,7 @@
     <div class="col-sm-10" ng-class="{ 'has-error' : patientForm.zip.$invalid && patientForm.zip.$dirty }">
       <input type="tel" ng-model="patient.zipCode" class="form-control" id="input-zip" placeholder="xxxxx"
              ng-minlength="5" ng-maxlength="10" name="zip">
-      <p ng-show="patientForm.zip.$invalid && patientForm.zip.$dirty" class="help block">
+      <p ng-show="patientForm.zip.$invalid && patientForm.zip.$dirty" class="help-block">
         ZIP Code must be valid (between 5 and 10 characters).
       </p>
     </div>
@@ -202,7 +202,7 @@
       <textarea ng-model="patient.description" class="form-control" id="input-description" placeholder="Add comments here..."
                 ng-maxlength="2048" name="desc">
       </textarea>
-      <p ng-show="patientForm.desc.$invalid && patientForm.desc.$dirty" class="help block">
+      <p ng-show="patientForm.desc.$invalid && patientForm.desc.$dirty" class="help-block">
         Description must be no longer than 2048 characters.
       </p>
     </div>

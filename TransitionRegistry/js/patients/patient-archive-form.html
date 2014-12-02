@@ -26,7 +26,7 @@
           Other
         </label>
       </div>
-      <p ng-show="archiveForm.desc.$invalid && archiveForm.desc.$dirty" class="help block">
+      <p ng-show="archiveForm.desc.$invalid && archiveForm.desc.$dirty" class="help-block">
         Reason is required.
       </p>
     </div>
@@ -38,7 +38,7 @@
       <textarea ng-model="patient.archiveDescriptionOther" class="form-control" id="input-description" placeholder="Add comments here..."
                 ng-required="patient.archiveDescriptionOption == 'Other'" ng-maxlength="2048" name="other">
       </textarea>
-      <p ng-show="archiveForm.other.$invalid && archiveForm.other.$dirty" class="help block">
+      <p ng-show="archiveForm.other.$invalid && archiveForm.other.$dirty" class="help-block">
         Description must be no longer than 2048 characters.
       </p>
     </div>
