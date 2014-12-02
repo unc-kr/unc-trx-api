@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using TransitionRegistry.Helpers;
 using TransitionRegistry.Models;
 
 namespace TransitionRegistry.DTOs
@@ -21,6 +22,7 @@ namespace TransitionRegistry.DTOs
         public DateTime? CreatedDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
         public DateTime? LastAccessDate { get; set; }
+        public DateTime? LastInteraction { get; set; }
 
         public PatientDetailDTO(Patient p) : base(p)
         {
@@ -36,6 +38,8 @@ namespace TransitionRegistry.DTOs
             this.CreatedDate = p.CreatedDate;
             this.LastModifiedDate = p.LastModifiedDate;
             this.LastAccessDate = p.LastAccessDate;
+
+            this.LastInteraction = ComparableHelper.Max(this.CreatedDate, this.LastModifiedDate, this.LastAccessDate);
         }
     }
 }

@@ -175,6 +175,7 @@
     <Compile Include="DTOs\PatientDTO.cs" />
     <Compile Include="DTOs\StudyDetailDTO.cs" />
     <Compile Include="DTOs\StudyDTO.cs" />
+    <Compile Include="Helpers\ComparableHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
