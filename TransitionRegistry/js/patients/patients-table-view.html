@@ -26,7 +26,8 @@
         </select>
       </th>
       <th>
-        <input class="input-sm form-control" type="search" placeholder="Filter by Age" ng-model="filters.age">
+        <input class="input-sm form-control age-input" type="search" placeholder="Min" ng-model="minAge">
+        <input class="input-sm form-control age-input" type="search" placeholder="Max" ng-model="maxAge">
       </th>
       <th>
         <select class="input-sm form-control" ng-model="filters.participantType" ng-init="filters.participantType = '!'">
@@ -39,7 +40,7 @@
   </thead>
   <tbody>
     <tr ng-click="loc('/patients/' + patient.id)"
-        ng-repeat="patient in patients | filter:{archived: filters.archive ? undefined : false} | filter:{name: filters.name, age: filters.age} | filter:{gender: filters.gender, participantType: filters.participantType}:true"
+        ng-repeat="patient in patients | rangeFilter:minAge:maxAge:'age' | filter:{archived: filters.archive ? undefined : false} | filter:{name: filters.name} | filter:{gender: filters.gender, participantType: filters.participantType}:true"
         ng-class="{warning: patient.archived}">
       <td>{{patient.mrnNumber}}</td>
       <td>{{patient.name}}</td>
