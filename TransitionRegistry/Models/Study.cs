@@ -7,10 +7,8 @@ using System.Web;
 
 namespace TransitionRegistry.Models
 {
-    public class Study : EntityBase
+    public class Study : BaseEntity
     {
-        public int Id { get; set; }
-
         [Required, MaxLength(64)]
         public string ShortCode { get; set; }
 

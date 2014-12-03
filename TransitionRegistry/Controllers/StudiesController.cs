@@ -12,59 +12,67 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using TransitionRegistry.DTOs;
 using TransitionRegistry.Models;
+using TransitionRegistry.Repositories;
 
 namespace TransitionRegistry.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class StudiesController : ApiController
     {
-        private TransitionRegistryContext db = new TransitionRegistryContext();
+        private StudyRepository repo = new StudyRepository();
 
         // GET: api/Studies
         public IEnumerable<StudyDTO> GetStudies()
         {
-            return db.Studies.AsEnumerable().Select(s => new StudyDTO(s));
+            return repo.GetAll().AsEnumerable().Select(s => new StudyDTO(s));
         }
 
         // GET: api/Studies/5
-        [ResponseType(typeof(StudyDetailDTO))]
-        public async Task<IHttpActionResult> GetStudy(int id)
+        [ResponseType(typeof(Study))]
+        public IHttpActionResult GetStudy(int id)
         {
-            var study = new StudyDetailDTO(
-                db.Studies.Include(s => s.Patients).First(s => s.Id == id)
-            );
-            
-            if (study == null)
+            var patient = repo.GetSingleWithPatients(id);
+
+            if (patient == null)
             {
                 return NotFound();
             }
 
-            return Ok(study);
+            var patientDto = new StudyDetailDTO(patient);
+
+            /* NON-ADMIN
+            if (patient.Archived == true)
+            {
+                return NotFound();
+            }
+            */
+
+            return Ok(patientDto);
         }
 
         // PUT: api/Studies/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutStudy(int id, Study study)
+        public IHttpActionResult PutStudy(int id, Study patient)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != study.Id)
+            if (id != patient.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(study).State = EntityState.Modified;
+            repo.Edit(patient);
 
             try
             {
-                db.SaveChanges();
+                repo.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StudyExists(id))
+                if (!repo.Exists(id))
                 {
                     return NotFound();
                 }
@@ -79,51 +87,17 @@ namespace TransitionRegistry.Controllers
 
         // POST: api/Studies
         [ResponseType(typeof(Study))]
-        public async Task<IHttpActionResult> PostStudy(Study study)
+        public IHttpActionResult PostStudy(Study patient)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Studies.Add(study);
-            await db.SaveChangesAsync();
+            repo.Add(patient);
+            repo.Save();
 
-            db.Entry(study).Collection(s => s.Patients).Load();
-
-            var dto = new StudyDetailDTO(study);
-
-            return CreatedAtRoute("DefaultApi", new { id = study.Id }, dto);
-        }
-
-        // DELETE: api/Studies/5
-        [ResponseType(typeof(Study))]
-        public IHttpActionResult DeleteStudy(int id)
-        {
-            Study study = db.Studies.Find(id);
-            if (study == null)
-            {
-                return NotFound();
-            }
-
-            study.Archived = true;
-            db.SaveChanges();
-
-            return Ok(study);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool StudyExists(int id)
-        {
-            return db.Studies.Count(e => e.Id == id) > 0;
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }

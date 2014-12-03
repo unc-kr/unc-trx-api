@@ -32,10 +32,8 @@ namespace TransitionRegistry.Models
     }
 
 
-    public class Patient : EntityBase
+    public class Patient : BaseEntity
     {
-        public int Id { get; set; }
-
         [Required, MinLength(2)]
         public string Name { get; set; }
 

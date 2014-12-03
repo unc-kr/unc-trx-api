@@ -12,32 +12,33 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using TransitionRegistry.DTOs;
 using TransitionRegistry.Models;
+using TransitionRegistry.Repositories;
 
 namespace TransitionRegistry.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PatientsController : ApiController
     {
-        private TransitionRegistryContext db = new TransitionRegistryContext();
+        private PatientRepository repo = new PatientRepository();
 
         // GET: api/Patients
         public IEnumerable<PatientDTO> GetPatients()
         {
-            return db.Patients.AsEnumerable().Select(p => new PatientDTO(p));
+            return repo.GetAll().AsEnumerable().Select(p => new PatientDTO(p));
         }
 
         // GET: api/Patients/5
         [ResponseType(typeof(Patient))]
-        public async Task<IHttpActionResult> GetPatient(int id)
+        public IHttpActionResult GetPatient(int id)
         {
-            var patient = new PatientDetailDTO(
-                db.Patients.Include(p => p.Studies).First(p => p.Id == id)
-            );
+            var patient = repo.GetSingleWithStudies(id);
 
             if (patient == null)
             {
                 return NotFound();
             }
+
+            var patientDto = new PatientDetailDTO(patient);
 
             /* NON-ADMIN
             if (patient.Archived == true)
@@ -46,7 +47,7 @@ namespace TransitionRegistry.Controllers
             }
             */
 
-            return Ok(patient);
+            return Ok(patientDto);
         }
 
         // PUT: api/Patients/5
@@ -63,15 +64,15 @@ namespace TransitionRegistry.Controllers
                 return BadRequest();
             }
 
-            db.Entry(patient).State = EntityState.Modified;
+            repo.Edit(patient);
 
             try
             {
-                db.SaveChanges();
+                repo.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PatientExists(id))
+                if (!repo.Exists(id))
                 {
                     return NotFound();
                 }
@@ -86,51 +87,17 @@ namespace TransitionRegistry.Controllers
 
         // POST: api/Patients
         [ResponseType(typeof(Patient))]
-        public async Task<IHttpActionResult> PostPatient(Patient patient)
+        public IHttpActionResult PostPatient(Patient patient)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Patients.Add(patient);
-            await db.SaveChangesAsync();
+            repo.Add(patient);
+            repo.Save();
 
-            db.Entry(patient).Collection(p => p.Studies).Load();
-
-            var dto = new PatientDetailDTO(patient);
-
-            return CreatedAtRoute("DefaultApi", new { id = patient.Id }, dto);
-        }
-
-        // DELETE: api/Patients/5
-        [ResponseType(typeof(Patient))]
-        public IHttpActionResult DeletePatient(int id)
-        {
-            Patient patient = db.Patients.Find(id);
-            if (patient == null)
-            {
-                return NotFound();
-            }
-
-            patient.Archived = true;
-            db.SaveChanges();
-
-            return Ok(patient);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool PatientExists(int id)
-        {
-            return db.Patients.Count(e => e.Id == id) > 0;
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }

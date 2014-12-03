@@ -212,11 +212,14 @@
       <DependentUpon>201412022142319_AddAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\EntityBase.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Study.cs" />
     <Compile Include="Models\TransitionRegistryContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\PatientRepository.cs" />
+    <Compile Include="Repositories\StudyRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
