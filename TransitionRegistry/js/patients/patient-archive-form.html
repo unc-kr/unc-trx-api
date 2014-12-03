@@ -11,19 +11,19 @@
         <label>
           <input type="radio" ng-model="patient.archiveDescriptionOption" name="desc" value="Deceased" 
                  required>
-          Deceased
+            Patient deceased
         </label>
       </div>
       <div class="radio">
         <label>
           <input type="radio" ng-model="patient.archiveDescriptionOption" name="desc" value="Moved">
-          Moved
+            Patient moved
         </label>
       </div>
       <div class="radio">
         <label>
           <input type="radio" ng-model="patient.archiveDescriptionOption" name="desc" value="Other">
-          Other
+            Other
         </label>
       </div>
       <p ng-show="archiveForm.desc.$invalid && archiveForm.desc.$dirty" class="help-block">
