@@ -77,7 +77,6 @@ app.config(function (httpMethodInterceptorProvider) {
 app.factory('growlInterceptor', function($q, growl) {
   return {
     responseError: function(rejection) {
-      console.log(rejection);
       growl.addErrorMessage('Error ' + rejection.status + ': ' + rejection.statusText);
       return $q.reject(rejection);
     }
