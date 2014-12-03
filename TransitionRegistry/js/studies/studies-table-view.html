@@ -1,7 +1,3 @@
-<div ng-init="filters.archive = false" ></div>
-<a class="btn btn-default" ng-hide="filters.archive" ng-click="filters.archive = true" >Show archived</a>
-<a class="btn btn-default" ng-show="filters.archive" ng-click="filters.archive = false">Hide archived</a>
-
 <table class="table table-striped table-bordered table-hover table-pointer">
   <thead>
     <tr>
@@ -9,7 +5,7 @@
       <th>Name</th>
       <th>Grant</th>
     </tr>
-    <tr>
+    <tr class="filter-row">
       <th>
         <input class="input-sm form-control" type="search" placeholder="Filter by Short Code" ng-model="filters.shortCode">
       </th>

@@ -11,6 +11,7 @@
     <p>Name: {{patient.name}}</p>
     <p>MRN Number: {{patient.mrnNumber}}</p>
     <p>Birthday: {{patient.birthday | date:mediumDate}}</p>
+    <p>Age: {{patient.age}}</p>
     <p>Gender: {{patient.gender}}</p>
     <p>Race: {{patient.race}}</p>
     <p>Patient Type: {{patient.participantType}}</p>
@@ -45,6 +46,10 @@
   <div class="col-md-5">
     
     <h3>Studies enrolled ({{studies.length}})</h3>
+
+    <div ng-init="filters.archive = false" ></div>
+    <a class="btn btn-default" ng-hide="filters.archive || hideArchivedBtn" ng-click="filters.archive = true" >Show archived</a>
+    <a class="btn btn-default" ng-show="filters.archive" ng-click="filters.archive = false">Hide archived</a>
 
     <div ng-include="'/js/studies/studies-table-view.html'"></div>
 

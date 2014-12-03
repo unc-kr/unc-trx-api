@@ -1,5 +1,9 @@
 <h2>Patients</h2>
 
+<div ng-init="filters.archive = false" ></div>
+<a class="btn btn-default" ng-hide="filters.archive" ng-click="filters.archive = true" >Show archived</a>
+<a class="btn btn-default" ng-show="filters.archive" ng-click="filters.archive = false">Hide archived</a>
+
 <div ng-include="'/js/patients/patients-table-view.html'"></div>
 
 <div class="row">

@@ -32,6 +32,12 @@ namespace TransitionRegistry
                 defaults: new { controller = "Enrollments" }
             );
 
+            config.Routes.MapHttpRoute(
+                name: "Dashboard",
+                routeTemplate: "api/Dashboard",
+                defaults: new { controller = "Dashboard" }
+            );
+
             var formatters = GlobalConfiguration.Configuration.Formatters;
             var jsonFormatter = formatters.JsonFormatter;
             var settings = jsonFormatter.SerializerSettings;

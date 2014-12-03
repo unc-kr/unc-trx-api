@@ -5,6 +5,7 @@ using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
 using TransitionRegistry.Models;
+using TransitionRegistry.Helpers;
 
 namespace TransitionRegistry.Repositories
 {
@@ -31,6 +32,11 @@ namespace TransitionRegistry.Repositories
             var entity = this.GetAll().FirstOrDefault(x => x.Id == id);
             this.UpdateLastAccessed(entity);
             return entity;
+        }
+
+        public virtual IQueryable<T> GetRecent(int count)
+        {
+            return this.GetAll().OrderByDescending(t => (t.LastAccessDate > t.LastModifiedDate ? t.LastAccessDate : t.LastModifiedDate)).Take(count);
         }
 
         public bool Exists(int id)

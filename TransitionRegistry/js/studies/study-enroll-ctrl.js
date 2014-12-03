@@ -19,13 +19,13 @@ angular.module('uncTrxApp')
     $scope.refresh();
 
     $scope.enrollPatient = function(patient) {
-      $http.post(ApiBaseUrl + 'api/studies/' + $scope.study.id + '/patients/' + patient.id).then(function() {
+      $http.post(ApiBaseUrl + '/studies/' + $scope.study.id + '/patients/' + patient.id).then(function() {
         $scope.refresh();
       });
     };
 
     $scope.unenrollPatient = function(patient) {
-      $http['delete'](ApiBaseUrl + 'api/studies/' + $scope.study.id + '/patients/' + patient.id).then(function() {
+      $http['delete'](ApiBaseUrl + '/studies/' + $scope.study.id + '/patients/' + patient.id).then(function() {
         $scope.refresh();
       });
     };

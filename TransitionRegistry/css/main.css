@@ -94,3 +94,12 @@ table {
     text-align:right;
     font-style:italic;
 }
+
+.dashboard .filter-row {
+  display: none;
+}
+
+.pad {
+  padding-left: 15px;
+  padding-right: 15px;
+}

@@ -1,4 +1,4 @@
 'use strict';
 
 angular.module('uncTrxApp')
-  .value('ApiBaseUrl', '/');
+  .value('ApiBaseUrl', '/api');
