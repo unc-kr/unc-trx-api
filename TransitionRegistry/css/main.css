@@ -34,16 +34,20 @@ html {
   margin-bottom: 0;
   line-height: 40px;
   padding-bottom: 19px;
-  padding-top:30px;
+  padding-top:20px;
   font-size: 30px;
   color:#ffffff;
   padding-left:25px;
+  width:342px;
+  margin-left:9px;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 5px 10px 0px, rgba(0, 0, 0, 0.298039) 0px 10px 10px -10px inset;
+  background: rgb(82, 146, 189) linear-gradient(rgb(89, 160, 211), rgb(74, 134, 174)) repeat scroll 0% 0% / auto padding-box border-box;
 }
 
 /* Custom page footer */
 .footer {
   padding:20px;
-  background-color:#656565;
+  background: rgb(72, 72, 72) linear-gradient(rgb(86, 86, 86), rgb(59, 59, 59)) repeat scroll 0% 0% / auto padding-box border-box;
   color: #777;
   border-top: 1px solid #e5e5e5;
   height:100px;
@@ -64,13 +68,9 @@ table {
 
 .container {
   background-color:#ffffff;
-  background-position:top;
-  background-repeat:repeat-x;
   border:5px solid #ffffff;
   padding-left:0px;
   padding-right:0px;
-
-
 }
 
 .nav.nav-pills a {
@@ -84,4 +84,13 @@ table {
   display: inline;
   float: left;
   width: 55px;
+}
+
+#topBar{
+    background: rgb(72, 72, 72) linear-gradient(rgb(86, 86, 86), rgb(59, 59, 59)) repeat scroll 0% 0% / auto padding-box border-box;
+    color:#fff;
+    box-shadow: rgba(0, 0, 0, 0.298039) 0px 5px 10px 0px, rgba(0, 0, 0, 0.298039) 0px 10px 10px -10px inset;
+    padding:5px 10px 5px 10px;
+    text-align:right;
+    font-style:italic;
 }
