@@ -46,9 +46,14 @@ namespace TransitionRegistry.Repositories
 
         protected virtual void UpdateLastAccessed(T entity)
         {
-            entity.LastAccessDate = DateTime.Now;
-            this._Edit(entity);
-            this.Save();
+            try
+            {
+                entity.LastAccessDate = DateTime.Now;
+                this._Edit(entity);
+                this.Save();
+            }
+            catch { 
+            }
         }
 
         public IQueryable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
