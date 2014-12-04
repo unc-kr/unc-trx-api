@@ -16,7 +16,6 @@ namespace TransitionRegistry.Migrations
             AlterColumn("dbo.Patients", "MrnNumber", c => c.String(nullable: false));
             AlterColumn("dbo.Patients", "Description", c => c.String(maxLength: 2048));
             AlterColumn("dbo.Patients", "ArchiveDescription", c => c.String(maxLength: 2048));
-            AlterColumn("dbo.Studies", "ShortCode", c => c.String(nullable: false, maxLength: 64));
             AlterColumn("dbo.Studies", "Name", c => c.String(nullable: false, maxLength: 512));
             AlterColumn("dbo.Studies", "ArchiveDescription", c => c.String(maxLength: 2048));
         }

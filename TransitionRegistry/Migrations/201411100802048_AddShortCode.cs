@@ -7,7 +7,7 @@ namespace TransitionRegistry.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Studies", "ShortCode", c => c.String(nullable: false));
+            AddColumn("dbo.Studies", "ShortCode", c => c.String(nullable: false, maxLength: 64));
         }
         
         public override void Down()
