@@ -44,7 +44,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="patient in patients | filter:{enrolled:true} |  filter:{mrnNumber: filters.mrnNumber, name: filters.name, birthday: filters.birthday} | filter:{gender: filters.gender, participantType: filters.participantType}:true">
+    <tr ng-repeat="patient in patients | filter:{archived: false, enrolled:true} |  filter:{mrnNumber: filters.mrnNumber, name: filters.name, birthday: filters.birthday} | filter:{gender: filters.gender, participantType: filters.participantType}:true">
       <td>{{patient.mrnNumber}}</td>
       <td>{{patient.name}}</td>
       <td>{{patient.gender}}</td>
@@ -99,7 +99,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="patient in patients | filter:{enrolled:false} | filter:{mrnNumber: filters.mrnNumber, name: filters.name, birthday: filters.birthday} | filter:{gender: filters.gender, participantType: filters.participantType}:true">
+    <tr ng-repeat="patient in patients | filter:{archived: false, enrolled:false} | filter:{mrnNumber: filters.mrnNumber, name: filters.name, birthday: filters.birthday} | filter:{gender: filters.gender, participantType: filters.participantType}:true">
       <td>{{patient.mrnNumber}}</td>
       <td>{{patient.name}}</td>
       <td>{{patient.gender}}</td>
