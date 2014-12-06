@@ -110,61 +110,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\login.css" />
-    <Content Include="css\main.css" />
-    <Content Include="favicon.ico" />
-    <Content Include="Global.asax" />
-    <Content Include="index.html" />
-    <Content Include="js\app.js" />
-    <Content Include="js\common\active-link.js" />
-    <Content Include="js\common\anchor.js" />
-    <Content Include="js\common\api-base-url.js" />
-    <Content Include="js\common\root-scope.js" />
-    <Content Include="js\common\wrappers.js" />
-    <Content Include="js\help\help-ctrl.js" />
-    <Content Include="js\help\help-view.html" />
-    <Content Include="js\home\home-ctrl.js" />
-    <Content Include="js\home\home-view.html" />
-    <Content Include="js\patients\patient-ctrl.js" />
-    <Content Include="js\patients\patient-edit-ctrl.js" />
-    <Content Include="js\patients\patient-form-view.html" />
-    <Content Include="js\patients\patient-new-ctrl.js" />
-    <Content Include="js\patients\patient-view.html" />
-    <Content Include="js\patients\patients-ctrl.js" />
-    <Content Include="js\patients\patients-service.js" />
-    <Content Include="js\patients\patients-table-view.html" />
-    <Content Include="js\patients\patients-view.html" />
-    <Content Include="js\studies\studies-ctrl.js" />
-    <Content Include="js\studies\studies-service.js" />
-    <Content Include="js\studies\studies-table-view.html" />
-    <Content Include="js\studies\studies-view.html" />
-    <Content Include="js\studies\study-ctrl.js" />
-    <Content Include="js\studies\study-edit-ctrl.js" />
-    <Content Include="js\studies\study-enroll-ctrl.js" />
-    <Content Include="js\studies\study-enroll-view.html" />
-    <Content Include="js\studies\study-form-view.html" />
-    <Content Include="js\studies\study-new-ctrl.js" />
-    <Content Include="js\studies\study-view.html" />
-    <Content Include="lib\angular-animate.js" />
-    <Content Include="lib\angular-cookies.js" />
-    <Content Include="lib\angular-input-date.js" />
-    <Content Include="lib\angular-resource.js" />
-    <Content Include="lib\angular-route.js" />
-    <Content Include="lib\angular-sanitize.js" />
-    <Content Include="lib\angular-touch.js" />
-    <Content Include="lib\angular.js" />
-    <Content Include="lib\bootstrap.css" />
-    <Content Include="lib\es5-shim.js" />
-    <Content Include="lib\font-awesome.min.css" />
-    <Content Include="lib\fontawesome-webfont.svg" />
-    <Content Include="lib\json3.js" />
-    <Content Include="lib\moment.js" />
-    <Content Include="lib\ng-quick-date-plus-default-theme.css" />
-    <Content Include="lib\ng-quick-date.min.js" />
-    <Content Include="lib\underscore.js" />
-    <Content Include="login.html" />
-    <Content Include="robots.txt" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -223,14 +168,6 @@
     <Compile Include="Repositories\StudyRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config" />
-    <Content Include="js\help\user-manual.md" />
-    <Content Include="lib\bootstrap.css.map" />
-    <Content Include="lib\fontawesome-webfont.eot" />
-    <Content Include="lib\fontawesome-webfont.ttf" />
-    <Content Include="lib\fontawesome-webfont.woff" />
-    <Content Include="lib\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\TransitionRegistry.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
