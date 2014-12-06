@@ -246,6 +246,7 @@
     <Content Include="lib\FontAwesome.otf" />
     <Content Include="login.html" />
     <None Include="Properties\PublishProfiles\TransitionRegistry.pubxml" />
+    <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
